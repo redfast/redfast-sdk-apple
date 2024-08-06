@@ -1,0 +1,15 @@
+{
+  "originHash" : "fc85e79949aeb0ed30707f37edda62bfabab0c8479dae9bd70c4cd817b2a9c83",
+  "pins" : [
+    {
+      "identity" : "redfast-sdk-apple",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/redfast/redfast-sdk-apple",
+      "state" : {
+        "branch" : "release/2.0.0",
+        "revision" : "a32f3daa9d58f3abdcb3fd8192c9763a1b2cbef5"
+      }
+    }
+  ],
+  "version" : 3
+}
