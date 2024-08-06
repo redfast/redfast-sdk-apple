@@ -1,0 +1,144 @@
+{
+  "identifier" : "B87592B7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6505074916",
+      "localizations" : [
+        {
+          "description" : "Redflix Annual Subscription",
+          "displayName" : "Annual subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.redfast.redflix.diamond",
+      "referenceName" : "Annual",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6505074939",
+      "localizations" : [
+        {
+          "description" : "Redflix Monthly Subscription",
+          "displayName" : "Monthly subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.redfast.redflix.platinum",
+      "referenceName" : "Monthly",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6466505932",
+      "localizations" : [
+        {
+          "description" : "Redflix Monthly Subscription",
+          "displayName" : "Monthly subscription",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "redflix_monthly",
+      "referenceName" : "Redflix Monthly",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6466506003",
+    "_developerTeamID" : "D6QF8GHB2L",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 742306731.93618095,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21391847",
+      "localizations" : [
+
+      ],
+      "name" : "Redflix main group",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6467465879",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "13VOZNVQ",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Redflix Annual",
+          "subscriptionGroupID" : "21391847",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
