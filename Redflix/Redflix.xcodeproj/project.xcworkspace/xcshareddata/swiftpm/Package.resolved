@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/redfast/redfast-sdk-apple",
       "state" : {
-        "branch" : "release/2.0.0",
-        "revision" : "a32f3daa9d58f3abdcb3fd8192c9763a1b2cbef5"
+        "revision" : "a2e16203fc870bf88c41b4553f9e536c44e9a129",
+        "version" : "2.1.1"
       }
     }
   ],
