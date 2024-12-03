@@ -10,6 +10,8 @@
 		431A5FD32C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD42C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FD52C21F0320076165D /* StoreKit.framework */; };
+		431B7FFD2CFA0D5200AEF571 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 431B7FFC2CFA0D5200AEF571 /* RedFast */; };
+		431B7FFF2CFA0D6700AEF571 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 431B7FFE2CFA0D6700AEF571 /* RedFast */; };
 		4338A9D02C11F8CF00950280 /* NotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */; };
 		4338A9D12C11F8CF00950280 /* NotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */; };
 		4338A9D32C11FB4400950280 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9D22C11FB4400950280 /* DeepLinkService.swift */; };
@@ -29,11 +31,9 @@
 		433B97A12C0A2E15004E4E57 /* MockPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B97A02C0A2E15004E4E57 /* MockPromotionView.swift */; };
 		433B97A72C0DD80C004E4E57 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B97A62C0DD80C004E4E57 /* LoadingViewController.swift */; };
 		433B97A82C0DD80C004E4E57 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B97A62C0DD80C004E4E57 /* LoadingViewController.swift */; };
-		434B30592C625ED9003F5013 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 434B30582C625ED9003F5013 /* RedFast */; };
 		434B305D2C625F24003F5013 /* Catamaran-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 434B305A2C625F24003F5013 /* Catamaran-Medium.ttf */; };
 		434B305E2C625F24003F5013 /* Catamaran-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 434B305B2C625F24003F5013 /* Catamaran-Bold.ttf */; };
 		434B305F2C625F24003F5013 /* Catamaran-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 434B305C2C625F24003F5013 /* Catamaran-Regular.ttf */; };
-		434B30612C625F48003F5013 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 434B30602C625F48003F5013 /* RedFast */; };
 		436CE6A72BFF5AB400A2A771 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436CE6A62BFF5AB400A2A771 /* ProfileViewController.swift */; };
 		436CE6A82BFF5AB400A2A771 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436CE6A62BFF5AB400A2A771 /* ProfileViewController.swift */; };
 		436CE6AA2BFF5ABD00A2A771 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436CE6A92BFF5ABD00A2A771 /* ProfileViewModel.swift */; };
@@ -333,7 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434B30592C625ED9003F5013 /* RedFast in Frameworks */,
+				431B7FFD2CFA0D5200AEF571 /* RedFast in Frameworks */,
 				43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434B30612C625F48003F5013 /* RedFast in Frameworks */,
+				431B7FFF2CFA0D6700AEF571 /* RedFast in Frameworks */,
 				431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,7 +756,7 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
-				434B30582C625ED9003F5013 /* RedFast */,
+				431B7FFC2CFA0D5200AEF571 /* RedFast */,
 			);
 			productName = Redflix;
 			productReference = 438592B92BE50CF500CDA801 /* Redflix.app */;
@@ -798,7 +798,7 @@
 			);
 			name = RedflixTV;
 			packageProductDependencies = (
-				434B30602C625F48003F5013 /* RedFast */,
+				431B7FFE2CFA0D6700AEF571 /* RedFast */,
 			);
 			productName = RedflixTV;
 			productReference = 438593252BE514A500CDA801 /* RedflixTV.app */;
@@ -836,7 +836,7 @@
 			);
 			mainGroup = 438592B02BE50CF500CDA801;
 			packageReferences = (
-				434B30572C625ED9003F5013 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
+				431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
 			);
 			productRefGroup = 438592BA2BE50CF500CDA801 /* Products */;
 			projectDirPath = "";
@@ -1416,25 +1416,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		434B30572C625ED9003F5013 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
+		431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/redfast/redfast-sdk-apple";
 			requirement = {
-				branch = release/2.0.0;
-				kind = branch;
+				kind = versionRange;
+				maximumVersion = 3.0.0;
+				minimumVersion = 2.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		434B30582C625ED9003F5013 /* RedFast */ = {
+		431B7FFC2CFA0D5200AEF571 /* RedFast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 434B30572C625ED9003F5013 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			package = 431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
 			productName = RedFast;
 		};
-		434B30602C625F48003F5013 /* RedFast */ = {
+		431B7FFE2CFA0D6700AEF571 /* RedFast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 434B30572C625ED9003F5013 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			package = 431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
 			productName = RedFast;
 		};
 /* End XCSwiftPackageProductDependency section */
