@@ -21,6 +21,6 @@ let package = Package(
         .binaryTarget(
             name: "RedFast",
             url: "https://github.com/redfast/redfast-sdk-apple/releases/download/2.2.0/RedFast.xcframework.zip",
-            checksum: "5f3f83f71be5e7f4c066970b35faed0cea3dca61be7b29e5f1749a964395ba99"),
+            checksum: "caf00f97670d4dfd96e6c4e219b166ffdf441e2f677b3e368ad5fb82c77b2d5a"),
     ]
 )
