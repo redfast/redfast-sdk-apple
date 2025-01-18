@@ -10,8 +10,6 @@
 		431A5FD32C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD42C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FD52C21F0320076165D /* StoreKit.framework */; };
-		431B7FFD2CFA0D5200AEF571 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 431B7FFC2CFA0D5200AEF571 /* RedFast */; };
-		431B7FFF2CFA0D6700AEF571 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 431B7FFE2CFA0D6700AEF571 /* RedFast */; };
 		4338A9D02C11F8CF00950280 /* NotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */; };
 		4338A9D12C11F8CF00950280 /* NotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */; };
 		4338A9D32C11FB4400950280 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9D22C11FB4400950280 /* DeepLinkService.swift */; };
@@ -174,6 +172,7 @@
 		438594642BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		438594652BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		4385946A2BFE2E6500CDA801 /* GenresViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */; };
+		439D3FFB2D3BBB890070E718 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 439D3FFA2D3BBB890070E718 /* RedFast */; };
 		43B9B9BD2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9BE2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FCB2C206C620076165D /* StoreKit.framework */; };
@@ -333,7 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				431B7FFD2CFA0D5200AEF571 /* RedFast in Frameworks */,
+				439D3FFB2D3BBB890070E718 /* RedFast in Frameworks */,
 				43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +348,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				431B7FFF2CFA0D6700AEF571 /* RedFast in Frameworks */,
 				431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,7 +754,7 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
-				431B7FFC2CFA0D5200AEF571 /* RedFast */,
+				439D3FFA2D3BBB890070E718 /* RedFast */,
 			);
 			productName = Redflix;
 			productReference = 438592B92BE50CF500CDA801 /* Redflix.app */;
@@ -798,7 +796,6 @@
 			);
 			name = RedflixTV;
 			packageProductDependencies = (
-				431B7FFE2CFA0D6700AEF571 /* RedFast */,
 			);
 			productName = RedflixTV;
 			productReference = 438593252BE514A500CDA801 /* RedflixTV.app */;
@@ -836,7 +833,7 @@
 			);
 			mainGroup = 438592B02BE50CF500CDA801;
 			packageReferences = (
-				431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
+				439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
 			);
 			productRefGroup = 438592BA2BE50CF500CDA801 /* Products */;
 			projectDirPath = "";
@@ -1416,26 +1413,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
+		439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/redfast/redfast-sdk-apple";
 			requirement = {
 				kind = versionRange;
 				maximumVersion = 3.0.0;
-				minimumVersion = 2.2.0;
+				minimumVersion = 2.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		431B7FFC2CFA0D5200AEF571 /* RedFast */ = {
+		439D3FFA2D3BBB890070E718 /* RedFast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
-			productName = RedFast;
-		};
-		431B7FFE2CFA0D6700AEF571 /* RedFast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 431B7FFB2CFA0D5200AEF571 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			package = 439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
 			productName = RedFast;
 		};
 /* End XCSwiftPackageProductDependency section */
