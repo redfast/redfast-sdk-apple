@@ -66,16 +66,16 @@ final class MovieRowViewModel {
         imageLoader: ImageLoaderProtocol,
         dateFormatter: DateFormatting
     ) {
-        name = response.name ?? ""
-        director = response.director ?? ""
-        duration = response.duration ?? ""
-        let ratingStr = response.rating?.replacingOccurrences(of: ",", with: ".") ?? ""
+        name = response.fieldData?.name ?? ""
+        director = response.fieldData?.director ?? ""
+        duration = response.fieldData?.duration ?? ""
+        let ratingStr = response.fieldData?.rating?.replacingOccurrences(of: ",", with: ".") ?? ""
         rating = Double(ratingStr) ?? 0
         starRating = Int(rating / 2)
-        category = Category(rawValue: response.categoryId ?? "") ?? .unknown
-        shortDescription = response.shortDescription ?? ""
-        landscapeImageURL = URL(string: response.landscape?.url ?? "")
-        portraitImageURL = URL(string: response.portrait?.url ?? "")
+        category = Category(rawValue: response.fieldData?.categoryId ?? "") ?? .unknown
+        shortDescription = response.fieldData?.shortDescription ?? ""
+        landscapeImageURL = URL(string: response.fieldData?.landscape?.url ?? "")
+        portraitImageURL = URL(string: response.fieldData?.portrait?.url ?? "")
         let date = dateFormatter.getDateFromResponseString(string: response.createdOn)
         releaseDate = dateFormatter.formatMovieReleaseDate(from: date)
         collectionType = type
