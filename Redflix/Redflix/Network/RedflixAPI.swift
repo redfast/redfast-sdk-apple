@@ -15,7 +15,7 @@ final class RedflixAPI: RedflixAPIProtocol {
     
     // MARK: - Properties
     private let networkManager: NetworkManagerProtocol
-    private let baseUrl = "https://api.webflow.com/"
+    private let baseUrl = "https://api.webflow.com/v2/"
     private var headers: [String: String] = [
         "Accept": "application/json",
         "accept-version": "1.0.0",
