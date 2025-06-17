@@ -3,10 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030BA12A2E00381C00EFFD1A /* Catamaran-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 434B305C2C625F24003F5013 /* Catamaran-Regular.ttf */; };
+		030BA12B2E00382100EFFD1A /* Catamaran-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 434B305A2C625F24003F5013 /* Catamaran-Medium.ttf */; };
+		030BA12C2E00382600EFFD1A /* Catamaran-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 434B305B2C625F24003F5013 /* Catamaran-Bold.ttf */; };
+		031E27592DE8DFF30014CF2B /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 031E27582DE8DFF30014CF2B /* RedFast */; };
+		031E275A2DE8DFF30014CF2B /* RedFast in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 031E27582DE8DFF30014CF2B /* RedFast */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		035A2F532D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E36792D78421D0067E385 /* RedFast */; };
+		035A2F542D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E367C2D7842AB0067E385 /* RedFast */; };
+		035A2F552D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E367F2D7842E10067E385 /* RedFast */; };
+		035A2F562D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E36822D7842EF0067E385 /* RedFast */; };
+		035A2F572D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E36852D7843430067E385 /* RedFast */; };
+		035A2F582D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E36882D78437C0067E385 /* RedFast */; };
+		035A2F592D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E368B2D7843B00067E385 /* RedFast */; };
+		035A2F5A2D7B664200417546 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E368E2D7844560067E385 /* RedFast */; };
+		035E36772D7841C00067E385 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 035E36762D7841C00067E385 /* RedFast */; };
+		03AF73012D81CE2A00C4ABFF /* RedFast in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 035E368E2D7844560067E385 /* RedFast */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		431A5FD32C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD42C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FD52C21F0320076165D /* StoreKit.framework */; };
@@ -172,7 +187,6 @@
 		438594642BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		438594652BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		4385946A2BFE2E6500CDA801 /* GenresViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */; };
-		439D3FFB2D3BBB890070E718 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 439D3FFA2D3BBB890070E718 /* RedFast */; };
 		43B9B9BD2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9BE2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FCB2C206C620076165D /* StoreKit.framework */; };
@@ -205,6 +219,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03AF73012D81CE2A00C4ABFF /* RedFast in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +230,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				031E275A2DE8DFF30014CF2B /* RedFast in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,7 +348,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				439D3FFB2D3BBB890070E718 /* RedFast in Frameworks */,
+				035A2F5A2D7B664200417546 /* RedFast in Frameworks */,
+				035A2F592D7B664200417546 /* RedFast in Frameworks */,
+				035A2F582D7B664200417546 /* RedFast in Frameworks */,
+				035A2F572D7B664200417546 /* RedFast in Frameworks */,
+				035A2F562D7B664200417546 /* RedFast in Frameworks */,
+				035A2F552D7B664200417546 /* RedFast in Frameworks */,
+				035A2F542D7B664200417546 /* RedFast in Frameworks */,
+				035A2F532D7B664200417546 /* RedFast in Frameworks */,
+				035E36772D7841C00067E385 /* RedFast in Frameworks */,
 				43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				031E27592DE8DFF30014CF2B /* RedFast in Frameworks */,
 				431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,7 +779,15 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
-				439D3FFA2D3BBB890070E718 /* RedFast */,
+				035E36762D7841C00067E385 /* RedFast */,
+				035E36792D78421D0067E385 /* RedFast */,
+				035E367C2D7842AB0067E385 /* RedFast */,
+				035E367F2D7842E10067E385 /* RedFast */,
+				035E36822D7842EF0067E385 /* RedFast */,
+				035E36852D7843430067E385 /* RedFast */,
+				035E36882D78437C0067E385 /* RedFast */,
+				035E368B2D7843B00067E385 /* RedFast */,
+				035E368E2D7844560067E385 /* RedFast */,
 			);
 			productName = Redflix;
 			productReference = 438592B92BE50CF500CDA801 /* Redflix.app */;
@@ -796,6 +829,7 @@
 			);
 			name = RedflixTV;
 			packageProductDependencies = (
+				031E27582DE8DFF30014CF2B /* RedFast */,
 			);
 			productName = RedflixTV;
 			productReference = 438593252BE514A500CDA801 /* RedflixTV.app */;
@@ -833,7 +867,7 @@
 			);
 			mainGroup = 438592B02BE50CF500CDA801;
 			packageReferences = (
-				439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
+				035E368D2D7844560067E385 /* XCLocalSwiftPackageReference "../../../RedfastSDK_Repo/mobile2/ios-SPM/Redflix/redfast" */,
 			);
 			productRefGroup = 438592BA2BE50CF500CDA801 /* Products */;
 			projectDirPath = "";
@@ -875,13 +909,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030BA12C2E00382600EFFD1A /* Catamaran-Bold.ttf in Resources */,
 				4385932F2BE514A700CDA801 /* Assets.xcassets in Resources */,
 				438593A12BED022400CDA801 /* Roboto-Regular.ttf in Resources */,
 				4385938D2BECFADD00CDA801 /* Catamaran-ExtraBold.ttf in Resources */,
+				030BA12A2E00381C00EFFD1A /* Catamaran-Regular.ttf in Resources */,
 				4385939F2BED022400CDA801 /* Roboto-Medium.ttf in Resources */,
 				438593542BE5542000CDA801 /* Assets.xcassets in Resources */,
 				438593A32BED022400CDA801 /* Roboto-Bold.ttf in Resources */,
 				438593322BE514A700CDA801 /* Base in Resources */,
+				030BA12B2E00382100EFFD1A /* Catamaran-Medium.ttf in Resources */,
 				438593A52BED022400CDA801 /* Roboto-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1121,6 +1158,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1184,6 +1222,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1215,7 +1254,7 @@
 				CODE_SIGN_ENTITLEMENTS = Redflix/Redflix.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = D6QF8GHB2L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Redflix/SupportingFiles/Info.plist;
@@ -1249,10 +1288,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Redflix/Redflix.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = D6QF8GHB2L;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Redfast, Inc. (D6QF8GHB2L)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 35;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = D6QF8GHB2L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Redflix/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Redflix;
@@ -1269,6 +1309,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.redfast.redflix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = distribute_oleksii_r;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1412,22 +1453,53 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/redfast/redfast-sdk-apple";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 3.0.0;
-				minimumVersion = 2.2.1;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		035E368D2D7844560067E385 /* XCLocalSwiftPackageReference "../../../RedfastSDK_Repo/mobile2/ios-SPM/Redflix/redfast" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../RedfastSDK_Repo/mobile2/ios-SPM/Redflix/redfast";
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		439D3FFA2D3BBB890070E718 /* RedFast */ = {
+		031E27582DE8DFF30014CF2B /* RedFast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			package = 035E368D2D7844560067E385 /* XCLocalSwiftPackageReference "../../../RedfastSDK_Repo/mobile2/ios-SPM/Redflix/redfast" */;
+			productName = RedFast;
+		};
+		035E36762D7841C00067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E36792D78421D0067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E367C2D7842AB0067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E367F2D7842E10067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E36822D7842EF0067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E36852D7843430067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E36882D78437C0067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E368B2D7843B00067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RedFast;
+		};
+		035E368E2D7844560067E385 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = RedFast;
 		};
 /* End XCSwiftPackageProductDependency section */
