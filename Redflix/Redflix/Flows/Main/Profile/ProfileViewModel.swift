@@ -9,36 +9,33 @@ import Foundation
 import Combine
 
 final class ProfileViewModel {
-    
+
     enum AlertState {
         case cancelSubscription
     }
-    
+
     enum ProfileMessage {
         case emptyFirstName
         case emptySecondName
-        case invalidEmail
         case successSubmission
         case offerAccepted
         case subscriptionCanceled
-        
+
         var title: String {
             switch self {
-            case .emptyFirstName, .emptySecondName, .invalidEmail:
+            case .emptyFirstName, .emptySecondName:
                 return "Error"
             case .successSubmission, .offerAccepted, .subscriptionCanceled:
                 return "Thank you!"
             }
         }
-        
+
         var body: String {
             switch self {
             case .emptyFirstName:
                 return "Please fill in your first name"
             case .emptySecondName:
                 return "Please fill in your second name"
-            case .invalidEmail:
-                return "Please add an valid email"
             case .successSubmission:
                 return "Your submission has been received!"
             case .offerAccepted:
@@ -48,24 +45,31 @@ final class ProfileViewModel {
             }
         }
     }
-    
+
     // MARK: - Properties
     private var cancellable = Set<AnyCancellable>()
     @Published var profileMessage: ProfileMessage?
-    
+
+    var deviceToken: String {
+        let token: String? = userDefaultsService.retrieveValue(for: .apnLastUploadedDeviceToken)
+        return token ?? "No device token available"
+    }
+
     // MARK: - Services
     private let promotionService: PromotionServiceProtocol
     private let sdkStatusManager: SDKStatusManaging
     private let emailValidator: EmailValidatorProtocol
+    private let userDefaultsService: UserDefaultsServiceProtocol
     weak var coordinator: TabCoordinatorProtocol?
-    
+
     init(services: ServiceLocating, coordinator: TabCoordinatorProtocol) {
         self.promotionService = services.resolve()
         self.sdkStatusManager = services.resolve()
         self.emailValidator = services.resolve()
+        self.userDefaultsService = services.resolve()
         self.coordinator = coordinator
     }
-    
+
     func change(firstName: String?, secondName: String?, phone: String?, email: String?) {
         guard let firstName, !firstName.isEmpty else {
             profileMessage = .emptyFirstName
@@ -75,15 +79,11 @@ final class ProfileViewModel {
             profileMessage = .emptySecondName
             return
         }
-        
-        guard emailValidator.isValidEmail(email) else {
-            profileMessage = .invalidEmail
-            return
-        }
-        
+
+        // Note: email parameter is now the device token field, which we don't validate
         profileMessage = .successSubmission
     }
-    
+
     func registerScreen(_ vc: PromotionViewProtocol) {
         sdkStatusManager.isSDKInitialised.sink { [weak self] isInitialised in
             guard let self, isInitialised else { return }
@@ -92,7 +92,7 @@ final class ProfileViewModel {
             }
         }.store(in: &cancellable)
     }
-    
+
     func cancelSubscription(id: String?, vc: PromotionViewProtocol) {
         promotionService.buttonClick(vc, buttonId: id) { [weak self] result in
             guard let self else { return }
@@ -106,11 +106,11 @@ final class ProfileViewModel {
             }
         }
     }
-    
+
     func billingHistory() {
         profileMessage = .successSubmission
     }
-    
+
     func showDebugView(_ vc: PromotionViewProtocol) {
         promotionService.showDebugView(vc)
     }
