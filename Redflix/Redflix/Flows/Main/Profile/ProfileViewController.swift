@@ -17,25 +17,25 @@ final class ProfileViewController: UIViewController {
         static let firstNamePlaceholderText = "Buff"
         static let secondNamePlaceholderText = "Pesos"
         static let phonePlaceholderText = "XXX-XXX-0007"
-        static let emailPlaceholderText = "buff.pesos@amazon.com"
+        static let emailPlaceholderText = "Device Token"
         static let changeButtonTitle = "CHANGE"
         static let settingsButtonTitle = "SETTINGS"
         static let cancelSubscriptionButtonTitle = "CANCEL SUBSCRIPTION"
         static let billingHistoryButtonTitle = "BILLING HISTORY"
-        
+
         static let primaryOrangeColor = AppColor.brandOrangeColor
         static let secondaryButtonColor = UIColor(hex: "#263846")
     }
-    
+
     // MARK: - Properties
     private let viewModel: ProfileViewModel
     private var activeTextField: UITextField?
     private var cancellable = Set<AnyCancellable>()
-    
+
     private var layoutType: LayoutType {
         UIDevice.current.userInterfaceIdiom == .phone ? .phone : .landscape
     }
-    
+
     // MARK: - Subviews
     private lazy var bgImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "profileImage"))
@@ -44,7 +44,7 @@ final class ProfileViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +52,7 @@ final class ProfileViewController: UIViewController {
         stackView.distribution = .equalSpacing
         return stackView
     }()
-    
+
     private lazy var profileStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +60,7 @@ final class ProfileViewController: UIViewController {
         stackView.alignment = .fill
         return stackView
     }()
-    
+
     private lazy var profileInputsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +69,7 @@ final class ProfileViewController: UIViewController {
         stackView.alignment = .fill
         return stackView
     }()
-    
+
     private lazy var nameInputsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ final class ProfileViewController: UIViewController {
         stackView.spacing = layoutType == .phone ? 0 : 20
         return stackView
     }()
-    
+
     private lazy var contactInfoInputsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,49 +89,49 @@ final class ProfileViewController: UIViewController {
         stackView.spacing = layoutType == .phone ? 0 : 20
         return stackView
     }()
-    
+
     private lazy var accountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.accountText
         return label
     }()
-    
+
     private lazy var profileLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.profileText
         return label
     }()
-    
+
     private lazy var firstNameTextField: BrandTextField = {
         let view = BrandTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
-    
+
     private lazy var secondNameTextField: BrandTextField = {
         let view = BrandTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
-    
+
     private lazy var phoneTextField: BrandTextField = {
         let view = BrandTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
-    
+
     private lazy var emailTextField: BrandTextField = {
         let view = BrandTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
-    
+
     private lazy var planStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -139,21 +139,21 @@ final class ProfileViewController: UIViewController {
         stackView.alignment = .leading
         return stackView
     }()
-    
+
     private lazy var planLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.planText
         return label
     }()
-    
+
     private lazy var planTextField: BrandTextField = {
         let view = BrandTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         return view
     }()
-    
+
     private lazy var changeButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -168,7 +168,7 @@ final class ProfileViewController: UIViewController {
         )
         return button
     }()
-    
+
     private lazy var settingsButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -183,7 +183,7 @@ final class ProfileViewController: UIViewController {
         )
         return button
     }()
-    
+
     private lazy var cancelSubscriptionButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -199,7 +199,7 @@ final class ProfileViewController: UIViewController {
         button.accessibilityIdentifier = "cancelSubscriptionButton"
         return button
     }()
-    
+
     private lazy var billingHistoryButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -214,7 +214,7 @@ final class ProfileViewController: UIViewController {
         )
         return button
     }()
-        
+
     private lazy var profileButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -222,7 +222,7 @@ final class ProfileViewController: UIViewController {
         stackView.spacing = 16
         return stackView
     }()
-    
+
     private lazy var planButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -230,46 +230,46 @@ final class ProfileViewController: UIViewController {
         stackView.spacing = 16
         return stackView
     }()
-    
+
     private lazy var allTextFields: [BrandTextField] = {
         [firstNameTextField, secondNameTextField, phoneTextField, emailTextField, planTextField]
     }()
-    
+
     private lazy var tapGesture = UITapGestureRecognizer(
         target: self,
         action: #selector(dismissKeyboard)
     )
-    
+
     // MARK: - Lifecycle
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupViewHierarchy()
         setupConstraints()
         setupAppearance()
         setupBindings()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNotifications()
         viewModel.registerScreen(self)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     // MARK: - Private
     private func buttonConfiguration(title: String, bgColor: UIColor?) -> UIButton.Configuration {
         var configuration = UIButton.Configuration.filled()
@@ -282,11 +282,11 @@ final class ProfileViewController: UIViewController {
             string: title,
             attributes: [.font: font, .foregroundColor: UIColor.white]
         )
-                
+
         configuration.attributedTitle = AttributedString(attributedString)
         return configuration
     }
-    
+
     // MARK: - Actions
     @objc private func changeTapped() {
         viewModel.change(
@@ -296,18 +296,18 @@ final class ProfileViewController: UIViewController {
             email: emailTextField.text
         )
     }
-    
+
     @objc private func cancelSubscriptionTapped() {
         viewModel.cancelSubscription(
             id: cancelSubscriptionButton.accessibilityIdentifier,
             vc: self
         )
     }
-    
+
     @objc private func billingHistoryTapped() {
         viewModel.billingHistory()
     }
-    
+
     @objc private func settingsTapped() {
         viewModel.showDebugView(self)
     }
@@ -331,7 +331,7 @@ extension ProfileViewController {
             nameInputsStackView,
             contactInfoInputsStackView,
             profileButtonsStackView
-            
+
         ])
         profileButtonsStackView.addArrangedSubviews([
             changeButton,
@@ -357,7 +357,7 @@ extension ProfileViewController {
             UIView()
         ])
     }
-    
+
     func setupConstraints() {
         view.addAnchorConstraintsTo(
             view: bgImageView,
@@ -378,51 +378,53 @@ extension ProfileViewController {
             $0.layer.masksToBounds = true
         }
     }
-    
+
     func setupAppearance() {
         navigationItem.applyBrandNavigationTitle()
         view.backgroundColor = .black
-        
+
         accountLabel.font = .custom(type: .catamaranBold, ofSize: layoutType == .phone ? 18 : 32)
         accountLabel.textColor = Constants.primaryOrangeColor
         profileLabel.font = .custom(type: .catamaranExtraBold, ofSize: layoutType == .phone ? 42 : 64)
         profileLabel.textColor = .white
         planLabel.font = .custom(type: .catamaranExtraBold, ofSize: layoutType == .phone ? 42 : 64)
         planLabel.textColor = .white
-        
+
         planTextField.configure(withPlaceholder: Constants.planPlaceholderText)
         firstNameTextField.configure(withPlaceholder: Constants.firstNamePlaceholderText)
         secondNameTextField.configure(withPlaceholder: Constants.secondNamePlaceholderText)
         phoneTextField.configure(withPlaceholder: Constants.phonePlaceholderText)
         emailTextField.configure(withPlaceholder: Constants.emailPlaceholderText)
-        
+        emailTextField.text = viewModel.deviceToken
+        emailTextField.isUserInteractionEnabled = true
+
         allTextFields.forEach {
             $0.autocorrectionType = .no
             $0.configure(withFont: .custom(type: .catamaranRegular, ofSize: layoutType == .phone ? 18 : 32))
         }
-        
+
         profileStackView.setCustomSpacing(16, after: contactInfoInputsStackView)
         planStackView.setCustomSpacing(16, after: planTextField)
         if layoutType == .landscape {
             profileStackView.setCustomSpacing(16, after: nameInputsStackView)
         }
     }
-    
+
     func setupBindings() {
         viewModel.$profileMessage.sink { [weak self] message in
             guard let self, let message else { return }
-            
+
             switch message {
             case .emptyFirstName:
                 firstNameTextField.markAsError()
             case .emptySecondName:
                 secondNameTextField.markAsError()
-            case .invalidEmail:
-                emailTextField.markAsError()
             case .successSubmission:
                 allTextFields.forEach {
                     $0.text = nil
                 }
+                // Restore device token after clearing all fields
+                emailTextField.text = viewModel.deviceToken
             default:
                 break
             }
@@ -431,7 +433,7 @@ extension ProfileViewController {
         }
         .store(in: &cancellable)
     }
-    
+
     func setupNotifications() {
 #if os(iOS)
         NotificationCenter.default.addObserver(
@@ -460,13 +462,13 @@ private extension ProfileViewController {
         else {
             return
         }
-        
+
         let keyboardHeight = keyboardFrame.height
         let windowHeight = UIScreen.main.bounds.height
         let keyboardTopY = windowHeight - keyboardHeight
         let textFieldMaxY = activeTextField.convert(activeTextField.bounds, to: nil).maxY
         let offset: CGFloat = 20.0
-        
+
 
         UIView.animate(withDuration: 0.2) {
             self.view.transform = textFieldMaxY + offset > keyboardTopY
@@ -481,7 +483,7 @@ private extension ProfileViewController {
             self.view.transform = .identity
         }
     }
-    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -490,11 +492,27 @@ private extension ProfileViewController {
 // MARK: - UITextFieldDelegate
 extension ProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
+        // Don't set activeTextField for device token field to prevent keyboard issues
+        if textField != emailTextField {
+            activeTextField = textField
+        }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeTextField = nil
+    }
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        // Allow selection for all fields including device token field
+        return true
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Prevent editing of device token field
+        if textField == emailTextField {
+            return false
+        }
+        return true
     }
 }
 

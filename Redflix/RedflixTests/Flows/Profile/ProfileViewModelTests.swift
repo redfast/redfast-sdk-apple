@@ -13,69 +13,56 @@ final class ProfileViewModelTests: XCTestCase {
     var services: MockServiceLocator!
     var viewModel: ProfileViewModel!
     var coordinator: MockTabCoordinator!
-    
+
     override func setUp() {
         super.setUp()
         services = MockServiceLocator()
         services.mockEmailValidator = MockEmailValidator()
         services.mockSDKStatusManager = MockSDKStatusManager()
         services.mockPromotionService = MockPromotionService()
+        services.mockUserDefaultsService = MockUserDefaultsService()
         coordinator = MockTabCoordinator()
         viewModel = ProfileViewModel(services: services, coordinator: coordinator)
     }
-    
+
     override func tearDown() {
         services = nil
         viewModel = nil
         super.tearDown()
     }
-    
+
     func testChangeWithEmptyFirstName() {
         // When
-        viewModel.change(firstName: "", secondName: "Last", phone: "1234567890", email: "test@example.com")
-        
+        viewModel.change(firstName: "", secondName: "Last", phone: "1234567890", email: "device_token_value")
+
         // Then
         XCTAssertEqual(viewModel.profileMessage, .emptyFirstName)
     }
-    
+
     func testChangeWithEmptySecondName() {
         // When
-        viewModel.change(firstName: "First", secondName: "", phone: "1234567890", email: "test@example.com")
-        
+        viewModel.change(firstName: "First", secondName: "", phone: "1234567890", email: "device_token_value")
+
         // Then
         XCTAssertEqual(viewModel.profileMessage, .emptySecondName)
     }
-    
-    func testChangeWithInvalidEmail() {
-        // Given
-        services.mockEmailValidator.isValidEmailResult = false
-        
-        // When
-        viewModel.change(firstName: "First", secondName: "Last", phone: "1234567890", email: "invalid email")
-        
-        // Then
-        XCTAssertEqual(viewModel.profileMessage, .invalidEmail)
-    }
-    
+
     func testChangeWithValidData() {
-        // Given
-        services.mockEmailValidator.isValidEmailResult = true
-        
         // When
-        viewModel.change(firstName: "First", secondName: "Last", phone: "1234567890", email: "test@example.com")
-        
+        viewModel.change(firstName: "First", secondName: "Last", phone: "1234567890", email: "device_token_value")
+
         // Then
         XCTAssertEqual(viewModel.profileMessage, .successSubmission)
     }
-    
+
     func testBillingHistory() {
         // When
         viewModel.billingHistory()
-        
+
         // Then
         XCTAssertEqual(viewModel.profileMessage, .successSubmission)
     }
-    
+
     func testRegisterScreen() {
         // Given
         let promotionView = MockPromotionView()
@@ -83,10 +70,10 @@ final class ProfileViewModelTests: XCTestCase {
         services.mockSDKStatusManager.isSDKInitialised.send(true)
         let expectedPromoResult = PromotionResult(code: .accepted, value: ["foo": "bar"])
         services.mockPromotionService.setScreenNameResult = expectedPromoResult
-        
+
         // When
         viewModel.registerScreen(promotionView)
-        
+
         // Then
         XCTAssertEqual(services.mockPromotionService.invocations, [
             .setScreenName("test screen name")
@@ -95,7 +82,7 @@ final class ProfileViewModelTests: XCTestCase {
             .handlePromotion(expectedPromoResult)
         ])
     }
-    
+
     func testCancelSubscriptionAccepted() {
         // Given
         let promotionView = MockPromotionView()
@@ -104,12 +91,12 @@ final class ProfileViewModelTests: XCTestCase {
 
         // When
         viewModel.cancelSubscription(id: "Foo", vc: promotionView)
-        
+
         // Then
         XCTAssertEqual(services.mockPromotionService.invocations, [.buttonClick("test screen name", buttonId: "Foo")])
         XCTAssertEqual(viewModel.profileMessage, .offerAccepted)
     }
-    
+
     func testCancelSubscriptionDeclined() {
         // Given
         let promotionView = MockPromotionView()
@@ -118,11 +105,11 @@ final class ProfileViewModelTests: XCTestCase {
 
         // When
         viewModel.cancelSubscription(id: "Foo", vc: promotionView)
-        
+
         // Then
         XCTAssertEqual(viewModel.profileMessage, .subscriptionCanceled)
     }
-    
+
     func testShowSettings() {
         // Given
         let promotionView = MockPromotionView()
@@ -130,8 +117,28 @@ final class ProfileViewModelTests: XCTestCase {
 
         // When
         viewModel.showDebugView(promotionView)
-        
+
         // Then
         XCTAssertEqual(services.mockPromotionService.invocations, [.showDebugView])
+    }
+
+    func testDeviceTokenWithStoredValue() {
+        // Given
+        let expectedToken = "test_device_token_12345"
+        services.mockUserDefaultsService.saveValue(expectedToken, for: .apnLastUploadedDeviceToken)
+
+        // When
+        let deviceToken = viewModel.deviceToken
+
+        // Then
+        XCTAssertEqual(deviceToken, expectedToken)
+    }
+
+    func testDeviceTokenWithNoStoredValue() {
+        // When
+        let deviceToken = viewModel.deviceToken
+
+        // Then
+        XCTAssertEqual(deviceToken, "No device token available")
     }
 }
