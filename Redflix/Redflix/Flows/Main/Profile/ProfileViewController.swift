@@ -7,7 +7,6 @@
 
 import UIKit
 import Combine
-import UserNotifications
 
 final class ProfileViewController: UIViewController {
     enum Constants {
@@ -197,20 +196,7 @@ final class ProfileViewController: UIViewController {
         return button
     }()
 
-    private lazy var testPushButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration = buttonConfiguration(
-            title: "TEST PUSH",
-            bgColor: Constants.secondaryButtonColor
-        )
-        button.addTarget(
-            self,
-            action: #selector(testPushTapped),
-            for: .primaryActionTriggered
-        )
-        return button
-    }()
+
 
     private lazy var cancelSubscriptionButton: UIButton = {
         let button = UIButton(type: .system)
@@ -371,121 +357,9 @@ final class ProfileViewController: UIViewController {
         viewModel.showDebugView(self)
     }
 
-    @objc private func testPushTapped() {
-        #if DEBUG
-        // Show alert with instructions first
-        let alert = UIAlertController(
-            title: "Test Push Notification",
-            message: "⚠️ IMPORTANT: The NotificationServiceExtension may not be properly added to the Xcode project.\n\n1. Tap 'Schedule Test'\n2. Put app in background immediately\n3. If notification doesn't show '[Modified]' in title, the extension isn't working\n\nTo fix: Add NotificationServiceExtension target to Xcode project",
-            preferredStyle: .alert
-        )
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Schedule Test", style: .default) { _ in
-            // Test notification payload display
-            self.testNotificationPayload()
-            // Test rich notifications
-            self.testRichNotification()
-        })
 
-        present(alert, animated: true)
-        #endif
-    }
 
-    #if DEBUG
-    private func testNotificationPayload() {
-        // Simulate the exact Amazon Pinpoint notification payload structure
-        let testPayload: [AnyHashable: Any] = [
-            "data": [
-                "media-url": "https://2b40fc8a-75fe-436e-afa7-e2879392566c.redfastlabs.com/assets/b1f950a1-1a30-4fcc-b6c4-cffb51b45271_rf_pinpoint_ios_image_1751929324.jpeg",
-                "pinpoint": [
-                    "deeplink": "https://www.redfast.com"
-                ]
-            ],
-            "aps": [
-                "mutable-content": 1,
-                "alert": [
-                    "title": "test7",
-                    "body": "test7"
-                ],
-                "content-available": 1
-            ],
-            "timestamp": ISO8601DateFormatter().string(from: Date())
-        ]
-
-        // Store the test payload (if NotificationPayloadStore is available)
-        // NotificationPayloadStore.shared.updatePayload(testPayload)
-        print("🧪 Simulated Amazon Pinpoint notification payload")
-    }
-
-    private func testRichNotification() {
-        // Request notification permissions first
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                print("✅ Notification permissions granted")
-                print("⚠️ For rich notifications to work with images, the app must be in the background or locked")
-                print("⚠️ Put the app in background/lock device after tapping this button")
-
-                // Schedule test notification with a longer delay to allow backgrounding
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    self.scheduleTestNotification()
-                }
-            } else {
-                print("❌ Notification permissions denied: \(error?.localizedDescription ?? "unknown")")
-            }
-        }
-    }
-
-    private func scheduleTestNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Test Rich Notification"
-        content.body = "Testing rich notification with image"
-        content.sound = .default
-
-        // Add category identifier to enable actions (optional, but helps with debugging)
-        content.categoryIdentifier = "TEST_CATEGORY"
-
-        // Use the exact Amazon Pinpoint payload structure
-        content.userInfo = [
-            "data": [
-                "media-url": "https://2b40fc8a-75fe-436e-afa7-e2879392566c.redfastlabs.com/assets/b1f950a1-1a30-4fcc-b6c4-cffb51b45271_rf_pinpoint_ios_image_1751929324.jpeg",
-                "pinpoint": [
-                    "deeplink": "https://www.redfast.com"
-                ]
-            ],
-            "aps": [
-                "mutable-content": 1,
-                "alert": [
-                    "title": "Test Rich Notification",
-                    "body": "Testing rich notification with image"
-                ],
-                "content-available": 1
-            ]
-        ]
-
-        // Add debug info to verify extension is called
-        print("🧪 Test payload being sent:")
-        print("🧪 UserInfo: \(content.userInfo)")
-        print("🧪 Mutable content in aps: \(content.userInfo["aps"])")
-
-        let request = UNNotificationRequest(
-            identifier: "test-rich-notification-\(Date().timeIntervalSince1970)",
-            content: content,
-            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        )
-
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("❌ Failed to schedule test notification: \(error)")
-            } else {
-                print("✅ Test notification scheduled - will appear in 10 seconds")
-                print("📱 Put the app in background or lock device NOW to test rich notifications with images")
-                print("🔍 If you don't see the '[Modified]' text in the notification title, the extension isn't running")
-                print("⚠️ NOTE: Local notifications may not always trigger service extensions. Real push notifications work better.")
-            }
-        }
-    }
-    #endif
 }
 
 // MARK: - Configurations
@@ -514,7 +388,6 @@ extension ProfileViewController {
         profileButtonsStackView.addArrangedSubviews([
             changeButton,
             settingsButton,
-            testPushButton,
             UIView()
         ])
         nameInputsStackView.addArrangedSubviews([

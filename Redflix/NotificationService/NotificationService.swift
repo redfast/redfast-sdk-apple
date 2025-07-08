@@ -2,7 +2,7 @@
 //  NotificationService.swift
 //  NotificationServiceExtension
 //
-//  Created by GitHub Copilot on 07.07.2025!!
+//  Created by GitHub Copilot on 07.07.2025!
 //
 
 import UserNotifications
@@ -37,6 +37,12 @@ class NotificationService: UNNotificationServiceExtension {
             return
         }
 
+        // Always add [Modified] to title to prove extension is working
+        if !bestAttemptContent.title.contains("[Modified]") {
+            bestAttemptContent.title = bestAttemptContent.title + " [Modified]"
+            print("✅ NotificationService: Added [Modified] to title")
+        }
+
         // Use the real payload instead of hardcoded test URL
         if let imageURLString = getImageURL(from: request.content.userInfo),
            let imageURL = URL(string: imageURLString) {
@@ -60,7 +66,6 @@ class NotificationService: UNNotificationServiceExtension {
             contentHandler(bestAttemptContent)
         }
     }
-
 
     private func getImageURL(from userInfo: [AnyHashable: Any]) -> String? {
         print("🔍 NotificationService: Searching for image URL in payload")
@@ -151,6 +156,8 @@ class NotificationService: UNNotificationServiceExtension {
                 print("❌ NotificationService: Image download failed: \(error.localizedDescription)")
                 print("❌ NotificationService: Error code: \((error as NSError).code)")
                 print("❌ NotificationService: Error domain: \((error as NSError).domain)")
+                content.title = content.title + " [Img Failed]"
+                content.body = content.body + " | Download error: \(error.localizedDescription)"
                 print("🔚 NotificationService: Calling completion handler (download error)")
                 completion(content)
                 return
@@ -158,6 +165,8 @@ class NotificationService: UNNotificationServiceExtension {
 
             guard let data = data else {
                 print("❌ NotificationService: No image data received")
+                content.title = content.title + " [Img Failed]"
+                content.body = content.body + " | No image data received"
                 print("🔚 NotificationService: Calling completion handler (no data)")
                 completion(content)
                 return
@@ -165,6 +174,8 @@ class NotificationService: UNNotificationServiceExtension {
 
             guard data.count > 0 else {
                 print("❌ NotificationService: Empty image data received")
+                content.title = content.title + " [Img Failed]"
+                content.body = content.body + " | Empty image data"
                 print("🔚 NotificationService: Calling completion handler (empty data)")
                 completion(content)
                 return
@@ -180,6 +191,8 @@ class NotificationService: UNNotificationServiceExtension {
                 // Accept all 2xx status codes (200-299) as successful
                 if !(200...299).contains(httpResponse.statusCode) {
                     print("❌ NotificationService: HTTP error - status code: \(httpResponse.statusCode)")
+                    content.title = content.title + " [Img Failed]"
+                    content.body = content.body + " | HTTP \(httpResponse.statusCode) error"
                     print("🔚 NotificationService: Calling completion handler (HTTP error)")
                     completion(content)
                     return
@@ -189,6 +202,8 @@ class NotificationService: UNNotificationServiceExtension {
             // Validate that we have some data
             guard self.isValidImageData(data) else {
                 print("❌ NotificationService: Downloaded data is not a valid image")
+                content.title = content.title + " [Img Failed]"
+                content.body = content.body + " | Invalid image data"
                 print("🔚 NotificationService: Calling completion handler (invalid data)")
                 completion(content)
                 return
@@ -196,6 +211,8 @@ class NotificationService: UNNotificationServiceExtension {
 
             guard let attachment = self.createImageAttachment(from: data, url: url) else {
                 print("❌ NotificationService: Failed to create image attachment")
+                content.title = content.title + " [Img Failed]"
+                content.body = content.body + " | Attachment creation failed"
                 print("🔚 NotificationService: Calling completion handler (attachment failed)")
                 completion(content)
                 return
@@ -203,6 +220,8 @@ class NotificationService: UNNotificationServiceExtension {
 
             print("✅ NotificationService: Image attachment created successfully")
             content.attachments = [attachment]
+            content.title = content.title + " [Img OK]"
+            content.body = content.body + " | Image attached (\(data.count) bytes)"
             print("✅ NotificationService: Attachment added to content. Total attachments: \(content.attachments.count)")
 
             // Confirm the attachment details
