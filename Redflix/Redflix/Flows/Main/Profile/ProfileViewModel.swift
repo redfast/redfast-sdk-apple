@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 final class ProfileViewModel {
 
@@ -49,6 +50,7 @@ final class ProfileViewModel {
     // MARK: - Properties
     private var cancellable = Set<AnyCancellable>()
     @Published var profileMessage: ProfileMessage?
+    @Published var notificationPayload: String = "No push notifications received yet"
 
     var deviceToken: String {
         let token: String? = userDefaultsService.retrieveValue(for: .apnLastUploadedDeviceToken)
@@ -68,6 +70,11 @@ final class ProfileViewModel {
         self.emailValidator = services.resolve()
         self.userDefaultsService = services.resolve()
         self.coordinator = coordinator
+
+        // Bind to notification payload updates
+        NotificationPayloadStore.shared.$latestPayload
+            .map { _ in NotificationPayloadStore.shared.getPayloadString() }
+            .assign(to: &$notificationPayload)
     }
 
     func change(firstName: String?, secondName: String?, phone: String?, email: String?) {
