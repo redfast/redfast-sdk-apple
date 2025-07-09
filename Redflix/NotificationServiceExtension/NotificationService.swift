@@ -37,6 +37,12 @@ class NotificationService: UNNotificationServiceExtension {
             return
         }
 
+        // Set up notification actions based on payload
+        setupNotificationActions(for: bestAttemptContent, from: request.content.userInfo)
+
+        // Add visible indicator that extension is running (temporary debug)
+        bestAttemptContent.title = "🔧 " + bestAttemptContent.title
+
         // Use the real payload instead of hardcoded test URL
         if let imageURLString = getImageURL(from: request.content.userInfo),
            let imageURL = URL(string: imageURLString) {
@@ -271,5 +277,98 @@ class NotificationService: UNNotificationServiceExtension {
 
         print("✅ NotificationService: Image data size is acceptable: \(data.count) bytes")
         return true
+    }
+
+    private func setupNotificationActions(for content: UNMutableNotificationContent, from userInfo: [AnyHashable: Any]) {
+        print("🔘 NotificationService: Setting up notification actions")
+
+        // Look for actions in the payload
+        var actions: [UNNotificationAction] = []
+
+        // Check for actions in data.actions array
+        if let customData = userInfo["data"] as? [String: Any],
+           let actionsData = customData["actions"] as? [[String: Any]] {
+            print("✅ NotificationService: Found actions in data.actions")
+            actions = createActionsFromPayload(actionsData)
+        }
+        // Check for actions at root level
+        else if let actionsData = userInfo["actions"] as? [[String: Any]] {
+            print("✅ NotificationService: Found actions at root level")
+            actions = createActionsFromPayload(actionsData)
+        }
+        // Check for pinpoint actions
+        else if let customData = userInfo["data"] as? [String: Any],
+                let pinpoint = customData["pinpoint"] as? [String: Any],
+                let actionsData = pinpoint["actions"] as? [[String: Any]] {
+            print("✅ NotificationService: Found actions in data.pinpoint.actions")
+            actions = createActionsFromPayload(actionsData)
+        }
+
+        if !actions.isEmpty {
+            // Create unique category identifier
+            let categoryId = "REDFLIX_ACTIONS_\(Date().timeIntervalSince1970)"
+            print("📋 NotificationService: Creating category \(categoryId) with \(actions.count) actions")
+
+            // Create category with actions
+            let category = UNNotificationCategory(
+                identifier: categoryId,
+                actions: actions,
+                intentIdentifiers: [],
+                options: [.customDismissAction]
+            )
+
+            // Register the category
+            UNUserNotificationCenter.current().setNotificationCategories([category])
+
+            // Set the category on the content
+            content.categoryIdentifier = categoryId
+
+            print("✅ NotificationService: Notification category set with \(actions.count) actions")
+        } else {
+            print("ℹ️ NotificationService: No actions found in payload")
+        }
+    }
+
+    private func createActionsFromPayload(_ actionsData: [[String: Any]]) -> [UNNotificationAction] {
+        var actions: [UNNotificationAction] = []
+
+        for (index, actionData) in actionsData.enumerated() {
+            guard let title = actionData["title"] as? String else {
+                print("⚠️ NotificationService: Action at index \(index) missing title")
+                continue
+            }
+
+            let actionId = actionData["id"] as? String ?? "action_\(index)"
+            let destructive = actionData["destructive"] as? Bool ?? false
+            let authRequired = actionData["authRequired"] as? Bool ?? false
+            let foreground = actionData["foreground"] as? Bool ?? false
+
+            // Create action options
+            var options: UNNotificationActionOptions = []
+            if destructive {
+                options.insert(.destructive)
+            }
+            if authRequired {
+                options.insert(.authenticationRequired)
+            }
+            if foreground {
+                options.insert(.foreground)
+            }
+
+            let action = UNNotificationAction(
+                identifier: actionId,
+                title: title,
+                options: options
+            )
+
+            actions.append(action)
+
+            print("🔘 NotificationService: Created action '\(title)' with ID '\(actionId)'")
+            if let deeplink = actionData["deeplink"] as? String {
+                print("🔗 NotificationService: Action deeplink: \(deeplink)")
+            }
+        }
+
+        return actions
     }
 }

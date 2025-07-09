@@ -144,6 +144,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
         print("🚨 didReceive delegate method called!")
+        print("🔘 Action identifier: \(response.actionIdentifier)")
 
         // Store the payload for profile screen display
         NotificationPayloadStore.shared.updatePayload(response.notification.request.content.userInfo)
@@ -162,6 +163,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
            let imageUrl = data["image"] as? String {
             print("🔔📱 Found image in data: \(imageUrl)")
         }
+
+        // Handle notification actions
+        handleNotificationAction(response: response)
 
         guard let result = response.notification.request.content.userInfo["data"] else {
             completionHandler()
@@ -200,5 +204,61 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
 
         completionHandler([.banner, .sound, .badge, .list])
+    }
+
+    private func handleNotificationAction(response: UNNotificationResponse) {
+        let actionIdentifier = response.actionIdentifier
+        let userInfo = response.notification.request.content.userInfo
+
+        print("🔘 Handling notification action: \(actionIdentifier)")
+
+        // Handle default action (notification tap)
+        if actionIdentifier == UNNotificationDefaultActionIdentifier {
+            print("🔘 User tapped notification (default action)")
+            return
+        }
+
+        // Handle dismiss action
+        if actionIdentifier == UNNotificationDismissActionIdentifier {
+            print("🔘 User dismissed notification")
+            return
+        }
+
+        // Handle custom actions
+        var actionData: [String: Any]?
+
+        // Look for actions in the payload to find the deeplink
+        if let customData = userInfo["data"] as? [String: Any],
+           let actionsArray = customData["actions"] as? [[String: Any]] {
+            actionData = actionsArray.first { ($0["id"] as? String) == actionIdentifier }
+        } else if let actionsArray = userInfo["actions"] as? [[String: Any]] {
+            actionData = actionsArray.first { ($0["id"] as? String) == actionIdentifier }
+        } else if let customData = userInfo["data"] as? [String: Any],
+                  let pinpoint = customData["pinpoint"] as? [String: Any],
+                  let actionsArray = pinpoint["actions"] as? [[String: Any]] {
+            actionData = actionsArray.first { ($0["id"] as? String) == actionIdentifier }
+        }
+
+        if let actionData = actionData {
+            let title = actionData["title"] as? String ?? "Unknown Action"
+            print("🔘 Executing action: \(title)")
+
+            if let deeplink = actionData["deeplink"] as? String {
+                print("🔗 Action deeplink: \(deeplink)")
+
+                // Handle the deeplink through the app coordinator
+                DispatchQueue.main.async {
+                    if let url = URL(string: deeplink) {
+                        self.appCoordinator?.handleDeepLink(url)
+                    } else {
+                        print("⚠️ Invalid deeplink URL: \(deeplink)")
+                    }
+                }
+            } else {
+                print("⚠️ No deeplink found for action \(actionIdentifier)")
+            }
+        } else {
+            print("⚠️ No action data found for identifier: \(actionIdentifier)")
+        }
     }
 }
