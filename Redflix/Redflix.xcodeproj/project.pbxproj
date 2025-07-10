@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -176,6 +176,7 @@
 		43B9B9BD2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9BE2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FCB2C206C620076165D /* StoreKit.framework */; };
+		AA98366C2E1CDE3C00ABED79 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 438592B82BE50CF500CDA801;
 			remoteInfo = Redflix;
+		};
+		AA98366A2E1CDE3C00ABED79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 438592B12BE50CF500CDA801 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA9836642E1CDE3C00ABED79;
+			remoteInfo = NotificationServiceExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -217,6 +225,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9836712E1CDE3C00ABED79 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA98366C2E1CDE3C00ABED79 /* NotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -325,7 +344,22 @@
 		438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModelTests.swift; sourceTree = "<group>"; };
 		43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		43B9B9C12C3325E2000FF704 /* Configurations.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configurations.storekit; sourceTree = "<group>"; };
+		AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AA12EBE12E1DB18E00455EEE /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AA9836662E1CDE3C00ABED79 /* NotificationServiceExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (AA12EBE12E1DB18E00455EEE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NotificationServiceExtension; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		438592B62BE50CF500CDA801 /* Frameworks */ = {
@@ -349,6 +383,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9836622E1CDE3C00ABED79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +438,7 @@
 				438592BB2BE50CF500CDA801 /* Redflix */,
 				438593262BE514A500CDA801 /* RedflixTV */,
 				438592D22BE50CF600CDA801 /* RedflixTests */,
+				AA9836662E1CDE3C00ABED79 /* NotificationServiceExtension */,
 				438592BA2BE50CF500CDA801 /* Products */,
 				4385933A2BE5233B00CDA801 /* Frameworks */,
 			);
@@ -408,6 +450,7 @@
 				438592B92BE50CF500CDA801 /* Redflix.app */,
 				438592CF2BE50CF600CDA801 /* RedflixTests.xctest */,
 				438593252BE514A500CDA801 /* RedflixTV.app */,
+				AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -747,10 +790,12 @@
 				438592B62BE50CF500CDA801 /* Frameworks */,
 				438592B72BE50CF500CDA801 /* Resources */,
 				4385933E2BE5233B00CDA801 /* Embed Frameworks */,
+				AA9836712E1CDE3C00ABED79 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AA98366B2E1CDE3C00ABED79 /* PBXTargetDependency */,
 			);
 			name = Redflix;
 			packageProductDependencies = (
@@ -801,6 +846,28 @@
 			productReference = 438593252BE514A500CDA801 /* RedflixTV.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA98366E2E1CDE3C00ABED79 /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */;
+			buildPhases = (
+				AA9836612E1CDE3C00ABED79 /* Sources */,
+				AA9836622E1CDE3C00ABED79 /* Frameworks */,
+				AA9836632E1CDE3C00ABED79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AA9836662E1CDE3C00ABED79 /* NotificationServiceExtension */,
+			);
+			name = NotificationServiceExtension;
+			packageProductDependencies = (
+			);
+			productName = NotificationServiceExtension;
+			productReference = AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -808,7 +875,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					438592B82BE50CF500CDA801 = {
@@ -820,6 +887,9 @@
 					};
 					438593242BE514A500CDA801 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					AA9836642E1CDE3C00ABED79 = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -842,6 +912,7 @@
 				438592B82BE50CF500CDA801 /* Redflix */,
 				438593242BE514A500CDA801 /* RedflixTV */,
 				438592CE2BE50CF600CDA801 /* RedflixTests */,
+				AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -883,6 +954,13 @@
 				438593A32BED022400CDA801 /* Roboto-Bold.ttf in Resources */,
 				438593322BE514A700CDA801 /* Base in Resources */,
 				438593A52BED022400CDA801 /* Roboto-Light.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9836632E1CDE3C00ABED79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1136,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA9836612E1CDE3C00ABED79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1065,6 +1150,11 @@
 			isa = PBXTargetDependency;
 			target = 438592B82BE50CF500CDA801 /* Redflix */;
 			targetProxy = 438592D02BE50CF600CDA801 /* PBXContainerItemProxy */;
+		};
+		AA98366B2E1CDE3C00ABED79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */;
+			targetProxy = AA98366A2E1CDE3C00ABED79 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1215,7 +1305,7 @@
 				CODE_SIGN_ENTITLEMENTS = Redflix/Redflix.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = D6QF8GHB2L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Redflix/SupportingFiles/Info.plist;
@@ -1251,7 +1341,7 @@
 				CODE_SIGN_ENTITLEMENTS = Redflix/Redflix.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = D6QF8GHB2L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Redflix/SupportingFiles/Info.plist;
@@ -1282,7 +1372,6 @@
 		438592E72BE50CF600CDA801 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1301,7 +1390,6 @@
 		438592E82BE50CF600CDA801 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1371,6 +1459,60 @@
 			};
 			name = Release;
 		};
+		AA98366F2E1CDE3C00ABED79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D6QF8GHB2L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redfast.redflix.NotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA9836702E1CDE3C00ABED79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D6QF8GHB2L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redfast.redflix.NotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1406,6 +1548,15 @@
 			buildConfigurations = (
 				438593342BE514A700CDA801 /* Debug */,
 				438593352BE514A700CDA801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AA98366E2E1CDE3C00ABED79 /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA98366F2E1CDE3C00ABED79 /* Debug */,
+				AA9836702E1CDE3C00ABED79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
