@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import RedFast
 
 // MARK: - Notification Payload Storage
 class NotificationPayloadStore: ObservableObject {
@@ -34,7 +35,77 @@ class NotificationPayloadStore: ObservableObject {
 }
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, RedfastPushDelegate {
+
+    func redfastPushWillPresent(userInfo: [AnyHashable: Any]) {
+        //MOVED FROM APP DELEGATE METHOD
+        // Store the payload for profile screen display
+        NotificationPayloadStore.shared.updatePayload(userInfo)
+
+        // Debug log: Print the complete notification payload when received while app is active
+        print("🔔📱 Push notification received (app in foreground):")
+        print("🔔📱 Complete payload: \(userInfo)")
+
+        // Check for media-url specifically
+        if let mediaUrl = userInfo["media-url"] as? String {
+            print("🔔📱 Found media-url: \(mediaUrl)")
+        }
+
+        // Check for mutable-content flag
+        if let aps = userInfo["aps"] as? [String: Any],
+           let mutableContent = aps["mutable-content"] as? Int {
+            print("🔔📱 Mutable content flag: \(mutableContent)")
+        }
+
+        //completionHandler([.banner, .sound, .badge, .list])
+
+    }
+    func redfastPushDidReceive(userInfo: [AnyHashable : Any]) {
+        print("Redfast in appdelegate: Remote notification received userInfo: \(userInfo)")
+
+        //MOVED FROM APP DELEGATE METHOD
+
+          // Store the payload for profile screen display
+          NotificationPayloadStore.shared.updatePayload(userInfo)
+
+          // Debug log: Print the complete notification payload
+          print("🔔📱 Push notification received (user tapped):")
+          print("🔔📱 Complete payload: \(userInfo)")
+
+          // Check for media-url specifically
+          if let mediaUrl = userInfo["media-url"] as? String {
+              print("🔔📱 Found media-url: \(mediaUrl)")
+          }
+
+          // Check for other image fields
+          if let data = userInfo["data"] as? [String: Any],
+             let imageUrl = data["image"] as? String {
+              print("🔔📱 Found image in data: \(imageUrl)")
+          }
+
+        //??!! NEED TO BACK THIS
+          // Handle notification actions
+         /* handleNotificationAction(response: response)
+
+          guard let result = userInfo["data"] else {
+              completionHandler()
+              return
+          } */
+
+        //??!! AND THIS !
+//          if let payload = notificationService.notificationPayload(from: result) {
+//              appCoordinator?.handleDeepLink(payload.pinpoint.deeplink)
+//          }
+    }
+    
+    func redfastPushDidRegister(token: String) {
+        print("Redfast in appdelegate: redfastPushDidRegister: \(token)")
+    }
+    
+    func redfastPushDidFailToRegister(error: any Error) {
+        print("Redfast in appdelegate: redfastPushDidFailToRegister")
+    }
+    
 
 #if os(tvOS)
     var window: UIWindow?
@@ -81,7 +152,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = tokenParts.joined()
         print("📱✅ Device token registered successfully:")
         print("📱✅ Token: \(token)")
-        appCoordinator?.registerToken(token)
+
+        //??!!
+        appCoordinator?.registerToken(token) //actually not register but just keep in user defaults, moved register to SDK
+
+        RedfastPushManager.shared.didRegisterForRemoteNotifications(with: deviceToken)
     }
 
     func application(
@@ -91,6 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("📱❌ Failed to register for remote notifications:")
         print("📱❌ Error: \(error.localizedDescription)")
         print("📱❌ Full error: \(error)")
+        RedfastPushManager.shared.didFailToRegisterForRemoteNotifications(error: error)
     }
 
     private func registerFonts() {
@@ -115,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func registerNotifications() {
         print("APPDELEGATE: Starting notification registration")
-        notificationService.grantAccess { [weak self] status in
+       /* notificationService.grantAccess { [weak self] status in
             print("APPDELEGATE: Notification permission status: \(status)")
             guard let self else { return }
             guard status == .authorized else {
@@ -131,7 +207,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let currentDelegate = UNUserNotificationCenter.current().delegate
                 print("APPDELEGATE: Delegate set successfully: \(currentDelegate != nil)")
             }
-        }
+        }*/
+        RedfastPushManager.shared.delegate = self
+            RedfastPushManager.shared.requestPushAuthorization { granted in
+                if granted {
+                    UNUserNotificationCenter.current().delegate = self
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
     }
 }
 
@@ -144,7 +227,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
         print("🚨 didReceive delegate method called!")
-        print("🔘 Action identifier: \(response.actionIdentifier)")
+      /*  print("🔘 Action identifier: \(response.actionIdentifier)")
 
         // Store the payload for profile screen display
         NotificationPayloadStore.shared.updatePayload(response.notification.request.content.userInfo)
@@ -174,7 +257,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         if let payload = notificationService.notificationPayload(from: result) {
             appCoordinator?.handleDeepLink(payload.pinpoint.deeplink)
         }
-        completionHandler()
+        completionHandler()*/
+        RedfastPushManager.shared.didReceiveRemoteNotification(response.notification.request.content.userInfo)
+          completionHandler()
     }
 #endif
 
@@ -185,7 +270,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     ) {
         print("🚨 willPresent delegate method called!")
 
-        // Store the payload for profile screen display
+        /*// Store the payload for profile screen display
         NotificationPayloadStore.shared.updatePayload(notification.request.content.userInfo)
 
         // Debug log: Print the complete notification payload when received while app is active
@@ -202,7 +287,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
            let mutableContent = aps["mutable-content"] as? Int {
             print("🔔📱 Mutable content flag: \(mutableContent)")
         }
-
+*/
+        RedfastPushManager.shared.willPresentNotification(notification.request.content.userInfo)
         completionHandler([.banner, .sound, .badge, .list])
     }
 
