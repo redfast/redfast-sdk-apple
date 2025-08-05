@@ -78,28 +78,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RedfastPushManager.shared.configure()
     }
 
-//    WHERE TO SEt this
-//    //??!!
-//    appCoordinator?.registerToken(token) //actually not register but just keep in user defaults, moved register to SDK
-
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
         print("APPDELEGATE: ✅ didRegisterForRemoteNotificationsWithDeviceToken")
-//        let tokenParts = deviceToken.map { data in
-//            String(format: "%02.2hhx", data)
-//        }
-//        let token = tokenParts.joined()
-//        print("📱✅ Device token registered successfully:")
-//        print("📱✅ Token: \(token)")
-//
-//        //??!!
-//        appCoordinator?.registerToken(token) //actually not register but just keep in user defaults, moved register to SDK
-//
-
+        let tokenParts = deviceToken.map { data in
+            String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+		appCoordinator?.saveToken(token)
     }
-//
+
     func application(
         _ application: UIApplication,
         didFailToRegisterForRemoteNotificationsWithError error: Error
