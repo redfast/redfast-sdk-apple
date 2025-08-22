@@ -85,23 +85,8 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    func registerToken(_ token: String) {
-        let lastUploadedToken: String? = userDefaultsService.retrieveValue(for: .apnLastUploadedDeviceToken)
-        if token == lastUploadedToken {
-            return
-        }
-        
-        sdkStatusManager.isSDKInitialised.sink { [weak self] isInitialised in
-            guard let self, isInitialised else { return }
-            Task {
-                do {
-                    try await self.promotionService.registerDeviceToken(token)
-                    self.userDefaultsService.saveValue(token, for: .apnLastUploadedDeviceToken)
-                } catch let error {
-                    print("Can not upload the token: \(error.localizedDescription)")
-                }
-            }
-        }.store(in: &cancellable)
+    func saveToken(_ token: String) {
+        userDefaultsService.saveValue(token, for: .apnLastUploadedDeviceToken)
     }
     
     private func openURL(_ url: URL?) {

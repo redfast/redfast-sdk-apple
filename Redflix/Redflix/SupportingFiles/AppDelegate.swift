@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import RedFast
 
 // MARK: - Notification Payload Storage
 class NotificationPayloadStore: ObservableObject {
@@ -55,11 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        print("APPDELEGATE: didFinishLaunchingWithOptions called")
+
         registerServices()
         registerFonts()
-        registerNotifications()
-
+        configurePushNotifications()
 #if os(tvOS)
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
@@ -67,30 +67,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator?.start()
 #endif
 
-        print("APPDELEGATE: Setup complete")
         return true
+    }
+
+    func configurePushNotifications() {
+        // To intercept didReceive and willPresent notifications in the AppDelegate,
+        // while also handling them within the SDK
+        UNUserNotificationCenter.current().delegate = self
+
+        RedfastPushManager.shared.configure()
     }
 
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
+        print("APPDELEGATE: ✅ didRegisterForRemoteNotificationsWithDeviceToken")
         let tokenParts = deviceToken.map { data in
             String(format: "%02.2hhx", data)
         }
         let token = tokenParts.joined()
-        print("📱✅ Device token registered successfully:")
-        print("📱✅ Token: \(token)")
-        appCoordinator?.registerToken(token)
+		appCoordinator?.saveToken(token)
     }
 
     func application(
         _ application: UIApplication,
         didFailToRegisterForRemoteNotificationsWithError error: Error
     ) {
-        print("📱❌ Failed to register for remote notifications:")
-        print("📱❌ Error: \(error.localizedDescription)")
-        print("📱❌ Full error: \(error)")
+        print("APPDELEGATE:❌ didRegisterForRemoteNotificationsWithDeviceToken in the APP")
     }
 
     private func registerFonts() {
@@ -112,27 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         services.register(service: PurchaseManager() as PurchaseManagerProtocol)
         services.register(service: UserDefaultsService() as UserDefaultsServiceProtocol)
     }
-
-    private func registerNotifications() {
-        print("APPDELEGATE: Starting notification registration")
-        notificationService.grantAccess { [weak self] status in
-            print("APPDELEGATE: Notification permission status: \(status)")
-            guard let self else { return }
-            guard status == .authorized else {
-                print("APPDELEGATE: Notifications not authorized")
-                return
-            }
-            print("APPDELEGATE: Notifications authorized, setting delegate")
-            UNUserNotificationCenter.current().delegate = self
-            notificationService.registerNotification()
-
-            // Verify delegate is set
-            DispatchQueue.main.async {
-                let currentDelegate = UNUserNotificationCenter.current().delegate
-                print("APPDELEGATE: Delegate set successfully: \(currentDelegate != nil)")
-            }
-        }
-    }
 }
 
 // MARK: - UNUserNotificationCenterDelegate
@@ -143,7 +126,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        print("🚨 didReceive delegate method called!")
+        print("APPDELEGATE: didReceive delegate method called!")
         print("🔘 Action identifier: \(response.actionIdentifier)")
 
         // Store the payload for profile screen display
@@ -175,6 +158,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             appCoordinator?.handleDeepLink(payload.pinpoint.deeplink)
         }
         completionHandler()
+
     }
 #endif
 
@@ -183,7 +167,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        print("🚨 willPresent delegate method called!")
+        print("APPDELEGATE: willPresent delegate method called!")
 
         // Store the payload for profile screen display
         NotificationPayloadStore.shared.updatePayload(notification.request.content.userInfo)
