@@ -12,7 +12,6 @@ enum AppConstants {
     
     #warning("Please contact the customer support to get the appId, userId and webflowBearerToken.")
     static let appId = "YOUR_APP_ID"
-    static let appId = "YOUR_APP_ID"
     static let userId = "USER_ID"
     static let webflowBearerToken = "YOUR_BEARER_TOKEN"
 }
