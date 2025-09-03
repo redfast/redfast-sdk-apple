@@ -18,7 +18,7 @@ class NotificationTestHelper {
 
         // Test with default image URL
         content.userInfo = [
-            "media-url": "https://REMOVED.redfastlabs.com/assets/b1f950a1-1a30-4fcc-b6c4-cffb51b45271_rf_pinpoint_ios_image_1751929324.jpeg"
+            "media-url": "https://2b40fc8a-75fe-436e-afa7-e2879392566c.redfastlabs.com/assets/b1f950a1-1a30-4fcc-b6c4-cffb51b45271_rf_pinpoint_ios_image_1751929324.jpeg"
         ]
 
         // This is crucial - tells iOS that this notification can be modified
