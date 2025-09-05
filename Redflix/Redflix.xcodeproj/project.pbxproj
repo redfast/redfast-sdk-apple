@@ -172,9 +172,6 @@
 		438594642BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		438594652BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		4385946A2BFE2E6500CDA801 /* GenresViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */; };
-		439D3FFB2D3BBB890070E718 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 439D3FFA2D3BBB890070E718 /* RedFast */; };
-		43B9B9BD2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
-		43B9B9BE2C25C673000FF704 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */; };
 		43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FCB2C206C620076165D /* StoreKit.framework */; };
 		AA98366C2E1CDE3C00ABED79 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -342,7 +339,6 @@
 		4385945F2BFCB7F100CDA801 /* GenresViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewAssembler.swift; sourceTree = "<group>"; };
 		438594632BFD035100CDA801 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModelTests.swift; sourceTree = "<group>"; };
-		43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		43B9B9C12C3325E2000FF704 /* Configurations.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configurations.storekit; sourceTree = "<group>"; };
 		AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -366,7 +362,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				439D3FFB2D3BBB890070E718 /* RedFast in Frameworks */,
 				43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,7 +628,6 @@
 				438216992C0F6AA8006B77C6 /* NotificationService.swift */,
 				4338A9D22C11FB4400950280 /* DeepLinkService.swift */,
 				431A5FD22C21D5820076165D /* PurchaseManager.swift */,
-				43B9B9BC2C25C673000FF704 /* UserDefaultsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -799,7 +793,6 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
-				439D3FFA2D3BBB890070E718 /* RedFast */,
 			);
 			productName = Redflix;
 			productReference = 438592B92BE50CF500CDA801 /* Redflix.app */;
@@ -903,7 +896,7 @@
 			);
 			mainGroup = 438592B02BE50CF500CDA801;
 			packageReferences = (
-				439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
+				3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
 			);
 			productRefGroup = 438592BA2BE50CF500CDA801 /* Products */;
 			projectDirPath = "";
@@ -983,7 +976,6 @@
 				436CE6A72BFF5AB400A2A771 /* ProfileViewController.swift in Sources */,
 				436CE6AD2BFF5ACE00A2A771 /* ProfileViewAssembler.swift in Sources */,
 				438593572BE5587800CDA801 /* UIColor+Hex.swift in Sources */,
-				43B9B9BD2C25C673000FF704 /* UserDefaultsService.swift in Sources */,
 				438594322BF637AB00CDA801 /* MovieDetailsViewModel.swift in Sources */,
 				4338A9D32C11FB4400950280 /* DeepLinkService.swift in Sources */,
 				438593442BE5265C00CDA801 /* AppCoordinator.swift in Sources */,
@@ -1080,7 +1072,6 @@
 				438594152BF38D4500CDA801 /* LatestViewModel.swift in Sources */,
 				438594242BF3C88C00CDA801 /* ServiceLocator.swift in Sources */,
 				433B97922C08D4DF004E4E57 /* BannerCollectionReusableView.swift in Sources */,
-				43B9B9BE2C25C673000FF704 /* UserDefaultsService.swift in Sources */,
 				436CE6B82C04A49A00A2A771 /* EmailValidator.swift in Sources */,
 				436CE6C32C05F05E00A2A771 /* PromotionService.swift in Sources */,
 				433B97882C074F6A004E4E57 /* BannerRowViewModel.swift in Sources */,
@@ -1564,24 +1555,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
+		3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/redfast/redfast-sdk-apple";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 3.0.0;
-				minimumVersion = 2.2.2;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		439D3FFA2D3BBB890070E718 /* RedFast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 439D3FF92D3BBB890070E718 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
-			productName = RedFast;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 438592B12BE50CF500CDA801 /* Project object */;
 }

@@ -260,7 +260,9 @@ final class ProfileViewController: UIViewController {
         textView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         textView.textColor = .white
         textView.font = UIFont.custom(type: .catamaranRegular, ofSize: layoutType == .phone ? 10 : 14)
+#if os(iOS)
         textView.isEditable = false
+#endif
         textView.isSelectable = true
         textView.isScrollEnabled = true
         textView.layer.cornerRadius = 8
@@ -473,7 +475,6 @@ extension ProfileViewController {
         secondNameTextField.configure(withPlaceholder: Constants.secondNamePlaceholderText)
         phoneTextField.configure(withPlaceholder: Constants.phonePlaceholderText)
         emailTextField.configure(withPlaceholder: Constants.emailPlaceholderText)
-        emailTextField.text = viewModel.deviceToken
         emailTextField.isUserInteractionEnabled = true
 
         allTextFields.forEach {
@@ -506,8 +507,6 @@ extension ProfileViewController {
                 allTextFields.forEach {
                     $0.text = nil
                 }
-                // Restore device token after clearing all fields
-                emailTextField.text = viewModel.deviceToken
             default:
                 break
             }

@@ -15,7 +15,6 @@ final class MockServiceLocator: ServiceLocating {
     var mockEmailValidator: MockEmailValidator!
     var mockPromotionService: MockPromotionService!
     var mockSDKStatusManager: MockSDKStatusManager!
-    var mockUserDefaultsService: MockUserDefaultsService!
 
     func resolve<T>() -> T {
         if let mock = mockImageLoader as? T {
@@ -34,9 +33,6 @@ final class MockServiceLocator: ServiceLocating {
             return mock
         }
         if let mock = mockSDKStatusManager as? T {
-            return mock
-        }
-        if let mock = mockUserDefaultsService as? T {
             return mock
         }
 

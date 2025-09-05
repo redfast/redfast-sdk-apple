@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         registerServices()
         registerFonts()
-        configurePushNotifications()
+        UNUserNotificationCenter.current().delegate = self
 #if os(tvOS)
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
@@ -70,24 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func configurePushNotifications() {
-        // To intercept didReceive and willPresent notifications in the AppDelegate,
-        // while also handling them within the SDK
-        UNUserNotificationCenter.current().delegate = self
-
-        RedfastPushManager.shared.configure()
-    }
-
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
         print("APPDELEGATE: ✅ didRegisterForRemoteNotificationsWithDeviceToken")
-        let tokenParts = deviceToken.map { data in
-            String(format: "%02.2hhx", data)
-        }
-        let token = tokenParts.joined()
-		appCoordinator?.saveToken(token)
     }
 
     func application(
@@ -114,7 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         services.register(service: self.notificationService as NotificationServiceProtocol)
         services.register(service: DeepLinkService() as DeepLinkServiceProtocol)
         services.register(service: PurchaseManager() as PurchaseManagerProtocol)
-        services.register(service: UserDefaultsService() as UserDefaultsServiceProtocol)
     }
 }
 
@@ -160,7 +146,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
 
     }
-#endif
+
 
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
@@ -245,4 +231,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             print("⚠️ No action data found for identifier: \(actionIdentifier)")
         }
     }
+#endif
 }

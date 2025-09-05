@@ -20,7 +20,6 @@ final class ProfileViewModelTests: XCTestCase {
         services.mockEmailValidator = MockEmailValidator()
         services.mockSDKStatusManager = MockSDKStatusManager()
         services.mockPromotionService = MockPromotionService()
-        services.mockUserDefaultsService = MockUserDefaultsService()
         coordinator = MockTabCoordinator()
         viewModel = ProfileViewModel(services: services, coordinator: coordinator)
     }
@@ -120,18 +119,6 @@ final class ProfileViewModelTests: XCTestCase {
 
         // Then
         XCTAssertEqual(services.mockPromotionService.invocations, [.showDebugView])
-    }
-
-    func testDeviceTokenWithStoredValue() {
-        // Given
-        let expectedToken = "test_device_token_12345"
-        services.mockUserDefaultsService.saveValue(expectedToken, for: .apnLastUploadedDeviceToken)
-
-        // When
-        let deviceToken = viewModel.deviceToken
-
-        // Then
-        XCTAssertEqual(deviceToken, expectedToken)
     }
 
     func testDeviceTokenWithNoStoredValue() {
