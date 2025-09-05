@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3339EC3F2E6B61E30040A8B5 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 3339EC3E2E6B61E30040A8B5 /* RedFast */; };
+		3339EC412E6B61EA0040A8B5 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 3339EC402E6B61EA0040A8B5 /* RedFast */; };
 		431A5FD32C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD42C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FD52C21F0320076165D /* StoreKit.framework */; };
@@ -362,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3339EC3F2E6B61E30040A8B5 /* RedFast in Frameworks */,
 				43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3339EC412E6B61EA0040A8B5 /* RedFast in Frameworks */,
 				431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +797,7 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
+				3339EC3E2E6B61E30040A8B5 /* RedFast */,
 			);
 			productName = Redflix;
 			productReference = 438592B92BE50CF500CDA801 /* Redflix.app */;
@@ -834,6 +839,7 @@
 			);
 			name = RedflixTV;
 			packageProductDependencies = (
+				3339EC402E6B61EA0040A8B5 /* RedFast */,
 			);
 			productName = RedflixTV;
 			productReference = 438593252BE514A500CDA801 /* RedflixTV.app */;
@@ -1564,6 +1570,19 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3339EC3E2E6B61E30040A8B5 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			productName = RedFast;
+		};
+		3339EC402E6B61EA0040A8B5 /* RedFast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			productName = RedFast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 438592B12BE50CF500CDA801 /* Project object */;
 }
