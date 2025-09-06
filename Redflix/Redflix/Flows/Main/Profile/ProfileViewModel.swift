@@ -52,23 +52,16 @@ final class ProfileViewModel {
     @Published var profileMessage: ProfileMessage?
     @Published var notificationPayload: String = "No push notifications received yet"
 
-    var deviceToken: String {
-        let token: String? = userDefaultsService.retrieveValue(for: .apnLastUploadedDeviceToken)
-        return token ?? "No device token available"
-    }
-
     // MARK: - Services
     private let promotionService: PromotionServiceProtocol
     private let sdkStatusManager: SDKStatusManaging
     private let emailValidator: EmailValidatorProtocol
-    private let userDefaultsService: UserDefaultsServiceProtocol
     weak var coordinator: TabCoordinatorProtocol?
 
     init(services: ServiceLocating, coordinator: TabCoordinatorProtocol) {
         self.promotionService = services.resolve()
         self.sdkStatusManager = services.resolve()
         self.emailValidator = services.resolve()
-        self.userDefaultsService = services.resolve()
         self.coordinator = coordinator
 
         // Bind to notification payload updates

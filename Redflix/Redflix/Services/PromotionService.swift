@@ -19,7 +19,6 @@ protocol PromotionServiceProtocol {
     func getInlines(_ type: InlineType) -> [Prompt]
     func buttonClick(_ parent: PromotionViewProtocol, buttonId: String?, _ onComplete: @escaping (PromotionResult) -> Void)
     func onInlineClick(prompt: Prompt, _ onComplete: @escaping(PromotionResult) -> Void)
-    func registerDeviceToken(_ deviceToken: String) async throws
     func showModal(on parent: PromotionViewProtocol, id: String, _ onComplete: @escaping(PromotionResult) -> Void)
     func purchase(_ productId: String, _ onComplete: @escaping (IapResult) -> Void)
     func showDebugView(_ viewController: PromotionViewProtocol)
@@ -53,11 +52,7 @@ final class PromotionService: PromotionServiceProtocol {
     func onInlineClick(prompt: Prompt, _ onComplete: @escaping(PromotionResult) -> Void) {
         PromotionManager.onInlineClick(prompt: prompt, onComplete)
     }
-    
-    func registerDeviceToken(_ deviceToken: String) async throws {
-        try await PromotionManager.registerDeviceToken(deviceToken)
-    }
-    
+
     func showModal(on parent: PromotionViewProtocol, id: String, _ onComplete: @escaping(PromotionResult) -> Void) {
         guard let vc = parent as? UIViewController else {
             preconditionFailure("Can't cast to UIViewController")

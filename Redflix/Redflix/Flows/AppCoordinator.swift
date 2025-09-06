@@ -21,7 +21,6 @@ final class AppCoordinator: Coordinator {
     private let window: UIWindow
     private let deepLinkParser: DeepLinkServiceProtocol
     private let sdkStatusManager: SDKStatusManaging
-    private let userDefaultsService: UserDefaultsServiceProtocol
     private let promotionService: PromotionServiceProtocol
     private var unprocessedDeepLink: URL?
     private var cancellable = Set<AnyCancellable>()
@@ -35,7 +34,6 @@ final class AppCoordinator: Coordinator {
         self.navigationController = UINavigationController()
         self.deepLinkParser = ServiceLocator.shared.resolve()
         self.sdkStatusManager = ServiceLocator.shared.resolve()
-        self.userDefaultsService = ServiceLocator.shared.resolve()
         self.promotionService = ServiceLocator.shared.resolve()
     }
     
@@ -83,10 +81,6 @@ final class AppCoordinator: Coordinator {
         default:
             break
         }
-    }
-    
-    func saveToken(_ token: String) {
-        userDefaultsService.saveValue(token, for: .apnLastUploadedDeviceToken)
     }
     
     private func openURL(_ url: URL?) {

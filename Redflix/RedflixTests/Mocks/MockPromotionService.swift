@@ -16,7 +16,6 @@ final class MockPromotionService: PromotionServiceProtocol {
         case getInlines(InlineType)
         case buttonClick(_ name: String, buttonId: String?)
         case onInlineClick(String?)
-        case registerDeviceToken(String)
         case showModal(String)
         case purchase(String)
         case showDebugView
@@ -55,10 +54,6 @@ final class MockPromotionService: PromotionServiceProtocol {
         
         invocations.append(.onInlineClick(prompt.properties.appleInappProductId))
         onComplete(onInlineClickResult)
-    }
-    
-    func registerDeviceToken(_ deviceToken: String) {
-        invocations.append(.registerDeviceToken(deviceToken))
     }
     
     func showModal(on parent: PromotionViewProtocol, id: String, _ onComplete: @escaping(PromotionResult) -> Void) {
