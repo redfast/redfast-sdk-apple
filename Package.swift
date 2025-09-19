@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "RedFast",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13)],
+        .iOS(.v15),
+        .tvOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -20,7 +20,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "RedFast",
-            url: "https://github.com/redfast/redfast-sdk-apple/releases/download/2.3.4/RedFast.xcframework.zip",
-            checksum: "f7fb2364f3c88e0b578d69c656cfb0d5f6df2321a4d902f810f02a635e295354"),
+            url: "https://github.com/redfast/redfast-sdk-apple/releases/download/2.3.5/RedFast.xcframework.zip",
+            checksum: "86d9f05463e1f77f6b34f23c844b1f8524e941ba67eed4f3a83a8d82b39635fd"),
     ]
 )
