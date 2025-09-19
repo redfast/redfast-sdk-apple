@@ -8,6 +8,23 @@
 import UIKit
 import RedFast
 
+enum ProductSKU: String, CaseIterable {
+    case diamond
+    case platinum
+    case annualSubscription
+    
+    var productId: String {
+        switch self {
+        case .diamond:
+            return "com.redfast.redflix.diamond"
+        case .platinum:
+            return "com.redfast.redflix.platinum"
+        case .annualSubscription:
+            return "13VOZNVQ"
+        }
+    }
+}
+
 protocol TabCoordinatorProtocol: Coordinator, AnyObject {
     func selectTab(_ tab: TabType)
     func setSelectedIndex(_ index: Int)
@@ -28,7 +45,6 @@ final class MainTabCoordinator: NSObject, TabCoordinatorProtocol {
     private var tabNavigationControllers: [UINavigationController] = []
     private let services = ServiceLocator.shared
     private let promotionService: PromotionServiceProtocol
-    private let purchaseManager: PurchaseManagerProtocol
     
     private lazy var loadingVC: UIViewController = {
         let loadingVC = LoadingViewController()
@@ -39,7 +55,6 @@ final class MainTabCoordinator: NSObject, TabCoordinatorProtocol {
     
     init(_ navigationController: UINavigationController) {
         self.promotionService = services.resolve()
-        self.purchaseManager = services.resolve()
         self.navigationController = navigationController
         self.tabBarController = UITabBarController()
 #if os(iOS)
@@ -127,9 +142,10 @@ final class MainTabCoordinator: NSObject, TabCoordinatorProtocol {
         currentNavigationController?.pushViewController(vc, animated: true)
     }
     
-    func startPurchase(sku: String) async throws {
-        try await purchaseManager.loadProductsIfNeeded()
-        try await purchaseManager.purchase(sku)
+    func startPurchase(sku: String) {
+        self.promotionService.purchase(ProductSKU.platinum.productId) { result in
+            print(result)
+        }
     }
     
     func showLoading(_ isLoading: Bool, completion: (() -> Void)?) {
@@ -144,9 +160,7 @@ final class MainTabCoordinator: NSObject, TabCoordinatorProtocol {
     
     func handlePromotion(_ result: PromotionResult) {
         if let sku = result.inAppProductId, result.code == .accepted {
-            Task {
-                try? await startPurchase(sku: sku)
-            }
+            startPurchase(sku: sku)
         }
     }
     

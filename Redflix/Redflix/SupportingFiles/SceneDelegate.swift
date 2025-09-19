@@ -25,14 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         appCoordinator = AppCoordinator(window: window)
         appCoordinator?.start()
-        
-        let notificationService: NotificationServiceProtocol = ServiceLocator.shared.resolve()
-        
-        if let userInfo = connectionOptions.notificationResponse?.notification.request.content.userInfo, let result = userInfo["data"] {
-            if let payload = notificationService.notificationPayload(from: result) {
-                appCoordinator?.handleDeepLink(payload.pinpoint.deeplink)
-            }
-        }
 #endif
+    }
+    
+    func scene(_ scene: UIScene,
+               openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            appCoordinator?.handleDeepLink(url)
+        }
     }
 }

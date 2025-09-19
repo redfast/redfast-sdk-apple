@@ -21,31 +21,33 @@ extension MovieCollectionResponse.MovieItem {
         local: Bool = false
     ) -> MovieCollectionResponse.MovieItem {
         return MovieCollectionResponse.MovieItem(
-            name: movieName,
-            director: director,
-            duration: duration,
-            rating: rating,
-            categoryId: categoryId,
-            shortDescription: shortDescription,
-            landscape: landscape,
-            portrait: portrait, 
             createdOn: createdOn,
-            local: local
+            local: local,
+            fieldData: MovieCollectionResponse.MovieItem.FieldData(
+                name: movieName,
+                director: director,
+                duration: duration,
+                rating: rating,
+                categoryId: categoryId,
+                shortDescription: shortDescription,
+                landscape: landscape,
+                portrait: portrait
+            )
         )
     }
 }
 
 extension MovieCollectionResponse.MovieItem: Equatable {
     public static func == (lhs: MovieCollectionResponse.MovieItem, rhs: MovieCollectionResponse.MovieItem) -> Bool {
-        lhs.name == rhs.name 
-        && lhs.director == rhs.director
-        && lhs.duration == rhs.duration
-        && lhs.rating == rhs.rating
-        && lhs.categoryId == rhs.categoryId
-        && lhs.shortDescription == rhs.shortDescription
-        && lhs.director == rhs.director
-        && lhs.landscape?.url == rhs.landscape?.url
-        && lhs.portrait?.url == rhs.portrait?.url
+        lhs.fieldData?.name == rhs.fieldData?.name
+        && lhs.fieldData?.director == rhs.fieldData?.director
+        && lhs.fieldData?.duration == rhs.fieldData?.duration
+        && lhs.fieldData?.rating == rhs.fieldData?.rating
+        && lhs.fieldData?.categoryId == rhs.fieldData?.categoryId
+        && lhs.fieldData?.shortDescription == rhs.fieldData?.shortDescription
+        && lhs.fieldData?.director == rhs.fieldData?.director
+        && lhs.fieldData?.landscape?.url == rhs.fieldData?.landscape?.url
+        && lhs.fieldData?.portrait?.url == rhs.fieldData?.portrait?.url
         && lhs.local == rhs.local
     }
 }

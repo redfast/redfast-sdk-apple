@@ -71,16 +71,18 @@ final class MovieRowViewModelTests: XCTestCase {
 private extension MovieRowViewModelTests {
     func movieItem(landscapeURL: String? = nil, portraitURL: String? = nil) -> MovieCollectionResponse.MovieItem {
         MovieCollectionResponse.MovieItem(
-            name: "Test Movie",
-            director: "Test Director",
-            duration: "120 mins",
-            rating: "6,5",
-            categoryId: "635c3e79a327a554fdd7a7f9",
-            shortDescription: "A test movie description",
-            landscape: landscapeURL != nil ? MovieCollectionResponse.ImageData(url: landscapeURL!) : nil,
-            portrait: portraitURL != nil ? MovieCollectionResponse.ImageData(url: portraitURL!) : nil, 
             createdOn: "",
-            local: false
+            local: false,
+            fieldData: MovieCollectionResponse.MovieItem.FieldData(
+                name: "Test Movie",
+                director: "Test Director",
+                duration: "120 mins",
+                rating: "6,5",
+                categoryId: "635c3e79a327a554fdd7a7f9",
+                shortDescription: "A test movie description",
+                landscape: landscapeURL != nil ? MovieCollectionResponse.ImageData(url: landscapeURL!) : nil,
+                portrait: portraitURL != nil ? MovieCollectionResponse.ImageData(url: portraitURL!) : nil
+            )
         )
     }
 }

@@ -3,17 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3339EC3F2E6B61E30040A8B5 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 3339EC3E2E6B61E30040A8B5 /* RedFast */; };
 		3339EC412E6B61EA0040A8B5 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 3339EC402E6B61EA0040A8B5 /* RedFast */; };
-		431A5FD32C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
-		431A5FD42C21D5820076165D /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FD22C21D5820076165D /* PurchaseManager.swift */; };
 		431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FD52C21F0320076165D /* StoreKit.framework */; };
-		4338A9D02C11F8CF00950280 /* NotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */; };
-		4338A9D12C11F8CF00950280 /* NotificationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */; };
 		4338A9D32C11FB4400950280 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9D22C11FB4400950280 /* DeepLinkService.swift */; };
 		4338A9D42C11FB4400950280 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9D22C11FB4400950280 /* DeepLinkService.swift */; };
 		433B97842C074D96004E4E57 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B97832C074D96004E4E57 /* BannerCollectionViewCell.swift */; };
@@ -54,8 +50,6 @@
 		436CE6C62C05F96100A2A771 /* SDKStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436CE6C42C05F96100A2A771 /* SDKStatusManager.swift */; };
 		436CE6C82C061AA600A2A771 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436CE6C72C061AA600A2A771 /* AppConstants.swift */; };
 		436CE6C92C061AA600A2A771 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436CE6C72C061AA600A2A771 /* AppConstants.swift */; };
-		4382169A2C0F6AA8006B77C6 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438216992C0F6AA8006B77C6 /* NotificationService.swift */; };
-		4382169B2C0F6AA8006B77C6 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438216992C0F6AA8006B77C6 /* NotificationService.swift */; };
 		438592BD2BE50CF500CDA801 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438592BC2BE50CF500CDA801 /* AppDelegate.swift */; };
 		438592BF2BE50CF500CDA801 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438592BE2BE50CF500CDA801 /* SceneDelegate.swift */; };
 		438592C62BE50CF600CDA801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438592C52BE50CF600CDA801 /* Assets.xcassets */; };
@@ -175,7 +169,6 @@
 		438594652BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		4385946A2BFE2E6500CDA801 /* GenresViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */; };
 		43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FCB2C206C620076165D /* StoreKit.framework */; };
-		AA98366C2E1CDE3C00ABED79 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,13 +178,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 438592B82BE50CF500CDA801;
 			remoteInfo = Redflix;
-		};
-		AA98366A2E1CDE3C00ABED79 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 438592B12BE50CF500CDA801 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA9836642E1CDE3C00ABED79;
-			remoteInfo = NotificationServiceExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -232,7 +218,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AA98366C2E1CDE3C00ABED79 /* NotificationServiceExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,9 +226,7 @@
 
 /* Begin PBXFileReference section */
 		431A5FCB2C206C620076165D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		431A5FD22C21D5820076165D /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		431A5FD52C21F0320076165D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS17.4.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
-		4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayload.swift; sourceTree = "<group>"; };
 		4338A9D22C11FB4400950280 /* DeepLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkService.swift; sourceTree = "<group>"; };
 		433B97832C074D96004E4E57 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		433B97862C074F6A004E4E57 /* BannerRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerRowViewModel.swift; sourceTree = "<group>"; };
@@ -269,7 +252,6 @@
 		436CE6C42C05F96100A2A771 /* SDKStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKStatusManager.swift; sourceTree = "<group>"; };
 		436CE6C72C061AA600A2A771 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		438216982C0F527A006B77C6 /* Redflix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Redflix.entitlements; sourceTree = "<group>"; };
-		438216992C0F6AA8006B77C6 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		438592B92BE50CF500CDA801 /* Redflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438592BC2BE50CF500CDA801 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		438592BE2BE50CF500CDA801 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -342,22 +324,7 @@
 		438594632BFD035100CDA801 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModelTests.swift; sourceTree = "<group>"; };
 		43B9B9C12C3325E2000FF704 /* Configurations.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configurations.storekit; sourceTree = "<group>"; };
-		AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		AA12EBE12E1DB18E00455EEE /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		AA9836662E1CDE3C00ABED79 /* NotificationServiceExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (AA12EBE12E1DB18E00455EEE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NotificationServiceExtension; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		438592B62BE50CF500CDA801 /* Frameworks */ = {
@@ -382,13 +349,6 @@
 			files = (
 				3339EC412E6B61EA0040A8B5 /* RedFast in Frameworks */,
 				431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA9836622E1CDE3C00ABED79 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +397,6 @@
 				438592BB2BE50CF500CDA801 /* Redflix */,
 				438593262BE514A500CDA801 /* RedflixTV */,
 				438592D22BE50CF600CDA801 /* RedflixTests */,
-				AA9836662E1CDE3C00ABED79 /* NotificationServiceExtension */,
 				438592BA2BE50CF500CDA801 /* Products */,
 				4385933A2BE5233B00CDA801 /* Frameworks */,
 			);
@@ -449,7 +408,6 @@
 				438592B92BE50CF500CDA801 /* Redflix.app */,
 				438592CF2BE50CF600CDA801 /* RedflixTests.xctest */,
 				438593252BE514A500CDA801 /* RedflixTV.app */,
-				AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -598,7 +556,6 @@
 			isa = PBXGroup;
 			children = (
 				438593772BEA6F2A00CDA801 /* Responses */,
-				4338A9CF2C11F8CF00950280 /* NotificationPayload.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -629,9 +586,7 @@
 				436CE6B62C04A49A00A2A771 /* EmailValidator.swift */,
 				436CE6C12C05F05E00A2A771 /* PromotionService.swift */,
 				436CE6C42C05F96100A2A771 /* SDKStatusManager.swift */,
-				438216992C0F6AA8006B77C6 /* NotificationService.swift */,
 				4338A9D22C11FB4400950280 /* DeepLinkService.swift */,
-				431A5FD22C21D5820076165D /* PurchaseManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -793,7 +748,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AA98366B2E1CDE3C00ABED79 /* PBXTargetDependency */,
 			);
 			name = Redflix;
 			packageProductDependencies = (
@@ -845,28 +799,6 @@
 			productReference = 438593252BE514A500CDA801 /* RedflixTV.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA98366E2E1CDE3C00ABED79 /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */;
-			buildPhases = (
-				AA9836612E1CDE3C00ABED79 /* Sources */,
-				AA9836622E1CDE3C00ABED79 /* Frameworks */,
-				AA9836632E1CDE3C00ABED79 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				AA9836662E1CDE3C00ABED79 /* NotificationServiceExtension */,
-			);
-			name = NotificationServiceExtension;
-			packageProductDependencies = (
-			);
-			productName = NotificationServiceExtension;
-			productReference = AA9836652E1CDE3C00ABED79 /* NotificationServiceExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -886,9 +818,6 @@
 					};
 					438593242BE514A500CDA801 = {
 						CreatedOnToolsVersion = 15.3;
-					};
-					AA9836642E1CDE3C00ABED79 = {
-						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -911,7 +840,6 @@
 				438592B82BE50CF500CDA801 /* Redflix */,
 				438593242BE514A500CDA801 /* RedflixTV */,
 				438592CE2BE50CF600CDA801 /* RedflixTests */,
-				AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -956,13 +884,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA9836632E1CDE3C00ABED79 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -995,7 +916,6 @@
 				433B978A2C08B907004E4E57 /* BannerView.swift in Sources */,
 				438594382BF6648C00CDA801 /* ValueLabelView.swift in Sources */,
 				436CE6C52C05F96100A2A771 /* SDKStatusManager.swift in Sources */,
-				4338A9D02C11F8CF00950280 /* NotificationPayload.swift in Sources */,
 				438593672BEA682A00CDA801 /* HomeViewAssembler.swift in Sources */,
 				438593642BEA64FB00CDA801 /* HomeViewModel.swift in Sources */,
 				436CE6C22C05F05E00A2A771 /* PromotionService.swift in Sources */,
@@ -1010,7 +930,6 @@
 				438593812BEA9D1200CDA801 /* MovieCollectionViewCell.swift in Sources */,
 				438592BF2BE50CF500CDA801 /* SceneDelegate.swift in Sources */,
 				4385937D2BEA8FC700CDA801 /* MovieRowViewModel.swift in Sources */,
-				4382169A2C0F6AA8006B77C6 /* NotificationService.swift in Sources */,
 				4385941A2BF3959C00CDA801 /* UINavigationItem+Image.swift in Sources */,
 				438593C32BED1E0800CDA801 /* MovieBannerView.swift in Sources */,
 				436CE6AA2BFF5ABD00A2A771 /* ProfileViewModel.swift in Sources */,
@@ -1024,7 +943,6 @@
 				438593892BECF1FD00CDA801 /* HeaderView.swift in Sources */,
 				438593742BEA6C9B00CDA801 /* RedflixAPI.swift in Sources */,
 				433B97912C08D4DF004E4E57 /* BannerCollectionReusableView.swift in Sources */,
-				431A5FD32C21D5820076165D /* PurchaseManager.swift in Sources */,
 				438593CC2BEE2EAD00CDA801 /* BadgeView.swift in Sources */,
 				4385934A2BE5415A00CDA801 /* TabType.swift in Sources */,
 				438594602BFCB7F100CDA801 /* GenresViewAssembler.swift in Sources */,
@@ -1081,7 +999,6 @@
 				436CE6B82C04A49A00A2A771 /* EmailValidator.swift in Sources */,
 				436CE6C32C05F05E00A2A771 /* PromotionService.swift in Sources */,
 				433B97882C074F6A004E4E57 /* BannerRowViewModel.swift in Sources */,
-				4382169B2C0F6AA8006B77C6 /* NotificationService.swift in Sources */,
 				438593C42BED1E0800CDA801 /* MovieBannerView.swift in Sources */,
 				438594362BF637D700CDA801 /* MovieDetailsViewAssembler.swift in Sources */,
 				436CE6B12BFF840D00A2A771 /* BrandTextField.swift in Sources */,
@@ -1104,7 +1021,6 @@
 				4385937E2BEA8FC700CDA801 /* MovieRowViewModel.swift in Sources */,
 				433B97852C074D96004E4E57 /* BannerCollectionViewCell.swift in Sources */,
 				438593CA2BED361E00CDA801 /* IconLabelView.swift in Sources */,
-				431A5FD42C21D5820076165D /* PurchaseManager.swift in Sources */,
 				4385945E2BFCB7C000CDA801 /* GenresViewModel.swift in Sources */,
 				4385945B2BFCB77E00CDA801 /* GenresViewController.swift in Sources */,
 				4385936F2BEA6B4A00CDA801 /* ApiError.swift in Sources */,
@@ -1127,16 +1043,8 @@
 				4385941B2BF3959C00CDA801 /* UINavigationItem+Image.swift in Sources */,
 				438593722BEA6B5E00CDA801 /* HTTPMethod.swift in Sources */,
 				438593532BE5506500CDA801 /* HomeViewController.swift in Sources */,
-				4338A9D12C11F8CF00950280 /* NotificationPayload.swift in Sources */,
 				436CE6C62C05F96100A2A771 /* SDKStatusManager.swift in Sources */,
 				438593622BEA4D4300CDA801 /* UIView+Constraints.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA9836612E1CDE3C00ABED79 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1147,11 +1055,6 @@
 			isa = PBXTargetDependency;
 			target = 438592B82BE50CF500CDA801 /* Redflix */;
 			targetProxy = 438592D02BE50CF600CDA801 /* PBXContainerItemProxy */;
-		};
-		AA98366B2E1CDE3C00ABED79 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA9836642E1CDE3C00ABED79 /* NotificationServiceExtension */;
-			targetProxy = AA98366A2E1CDE3C00ABED79 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1456,60 +1359,6 @@
 			};
 			name = Release;
 		};
-		AA98366F2E1CDE3C00ABED79 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D6QF8GHB2L;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.redfast.redflix.NotificationServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		AA9836702E1CDE3C00ABED79 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D6QF8GHB2L;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.redfast.redflix.NotificationServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1545,15 +1394,6 @@
 			buildConfigurations = (
 				438593342BE514A700CDA801 /* Debug */,
 				438593352BE514A700CDA801 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		AA98366E2E1CDE3C00ABED79 /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA98366F2E1CDE3C00ABED79 /* Debug */,
-				AA9836702E1CDE3C00ABED79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

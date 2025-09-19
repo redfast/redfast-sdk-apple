@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #endif
 
     private let services = ServiceLocator.shared
-    private var notificationService: NotificationServiceProtocol!
 
     func application(
         _ application: UIApplication,
@@ -66,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator(window: window)
         appCoordinator?.start()
 #endif
-
         return true
     }
 
@@ -97,10 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         services.register(service: EmailValidator() as EmailValidatorProtocol)
         services.register(service: PromotionService() as PromotionServiceProtocol)
         services.register(service: SDKStatusManager() as SDKStatusManaging)
-        self.notificationService = NotificationService()
-        services.register(service: self.notificationService as NotificationServiceProtocol)
         services.register(service: DeepLinkService() as DeepLinkServiceProtocol)
-        services.register(service: PurchaseManager() as PurchaseManagerProtocol)
     }
 }
 
@@ -112,39 +107,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        print("APPDELEGATE: didReceive delegate method called!")
-        print("🔘 Action identifier: \(response.actionIdentifier)")
-
         // Store the payload for profile screen display
         NotificationPayloadStore.shared.updatePayload(response.notification.request.content.userInfo)
-
-        // Debug log: Print the complete notification payload
-        print("🔔📱 Push notification received (user tapped):")
-        print("🔔📱 Complete payload: \(response.notification.request.content.userInfo)")
-
-        // Check for media-url specifically
-        if let mediaUrl = response.notification.request.content.userInfo["media-url"] as? String {
-            print("🔔📱 Found media-url: \(mediaUrl)")
-        }
-
-        // Check for other image fields
-        if let data = response.notification.request.content.userInfo["data"] as? [String: Any],
-           let imageUrl = data["image"] as? String {
-            print("🔔📱 Found image in data: \(imageUrl)")
-        }
-
-        // Handle notification actions
-        handleNotificationAction(response: response)
-
-        guard let result = response.notification.request.content.userInfo["data"] else {
-            completionHandler()
-            return
-        }
-        if let payload = notificationService.notificationPayload(from: result) {
-            appCoordinator?.handleDeepLink(payload.pinpoint.deeplink)
-        }
         completionHandler()
-
     }
 
 
@@ -153,83 +118,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        print("APPDELEGATE: willPresent delegate method called!")
-
-        // Store the payload for profile screen display
-        NotificationPayloadStore.shared.updatePayload(notification.request.content.userInfo)
-
-        // Debug log: Print the complete notification payload when received while app is active
-        print("🔔📱 Push notification received (app in foreground):")
-        print("🔔📱 Complete payload: \(notification.request.content.userInfo)")
-
-        // Check for media-url specifically
-        if let mediaUrl = notification.request.content.userInfo["media-url"] as? String {
-            print("🔔📱 Found media-url: \(mediaUrl)")
-        }
-
-        // Check for mutable-content flag
-        if let aps = notification.request.content.userInfo["aps"] as? [String: Any],
-           let mutableContent = aps["mutable-content"] as? Int {
-            print("🔔📱 Mutable content flag: \(mutableContent)")
-        }
-
         completionHandler([.banner, .sound, .badge, .list])
     }
 
-    private func handleNotificationAction(response: UNNotificationResponse) {
-        let actionIdentifier = response.actionIdentifier
-        let userInfo = response.notification.request.content.userInfo
 
-        print("🔘 Handling notification action: \(actionIdentifier)")
-
-        // Handle default action (notification tap)
-        if actionIdentifier == UNNotificationDefaultActionIdentifier {
-            print("🔘 User tapped notification (default action)")
-            return
-        }
-
-        // Handle dismiss action
-        if actionIdentifier == UNNotificationDismissActionIdentifier {
-            print("🔘 User dismissed notification")
-            return
-        }
-
-        // Handle custom actions
-        var actionData: [String: Any]?
-
-        // Look for actions in the payload to find the deeplink
-        if let customData = userInfo["data"] as? [String: Any],
-           let actionsArray = customData["actions"] as? [[String: Any]] {
-            actionData = actionsArray.first { ($0["id"] as? String) == actionIdentifier }
-        } else if let actionsArray = userInfo["actions"] as? [[String: Any]] {
-            actionData = actionsArray.first { ($0["id"] as? String) == actionIdentifier }
-        } else if let customData = userInfo["data"] as? [String: Any],
-                  let pinpoint = customData["pinpoint"] as? [String: Any],
-                  let actionsArray = pinpoint["actions"] as? [[String: Any]] {
-            actionData = actionsArray.first { ($0["id"] as? String) == actionIdentifier }
-        }
-
-        if let actionData = actionData {
-            let title = actionData["title"] as? String ?? "Unknown Action"
-            print("🔘 Executing action: \(title)")
-
-            if let deeplink = actionData["deeplink"] as? String {
-                print("🔗 Action deeplink: \(deeplink)")
-
-                // Handle the deeplink through the app coordinator
-                DispatchQueue.main.async {
-                    if let url = URL(string: deeplink) {
-                        self.appCoordinator?.handleDeepLink(url)
-                    } else {
-                        print("⚠️ Invalid deeplink URL: \(deeplink)")
-                    }
-                }
-            } else {
-                print("⚠️ No deeplink found for action \(actionIdentifier)")
-            }
-        } else {
-            print("⚠️ No action data found for identifier: \(actionIdentifier)")
-        }
-    }
 #endif
 }

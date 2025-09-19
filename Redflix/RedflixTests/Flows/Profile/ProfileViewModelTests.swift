@@ -120,12 +120,4 @@ final class ProfileViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(services.mockPromotionService.invocations, [.showDebugView])
     }
-
-    func testDeviceTokenWithNoStoredValue() {
-        // When
-        let deviceToken = viewModel.deviceToken
-
-        // Then
-        XCTAssertEqual(deviceToken, "No device token available")
-    }
 }
