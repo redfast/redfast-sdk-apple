@@ -20,7 +20,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "RedFast",
-            url: "https://github.com/redfast/redfast-sdk-apple/releases/download/2.3.14/RedFast.xcframework.zip",
-            checksum: "fd90bf3b78d00db8d8d5439c4e580779efbe34fb1f5d70cc997eef234e81f56a"),
+            url: "https://github.com/redfast/redfast-sdk-apple/releases/download/2.3.15/RedFast.xcframework.zip",
+            checksum: "dfa9c4fdaeb0c7c44fdc65af92785363ad62900c4c186c7a0dd9cda4d253b31c"),
     ]
 )
