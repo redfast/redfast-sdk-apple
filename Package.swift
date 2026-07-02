@@ -1,26 +1,68 @@
-// swift-tools-version:5.5
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
+// swift-tools-version: 5.5
 import PackageDescription
 
 let package = Package(
     name: "RedFast",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13)],
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "RedFast",
-            targets: ["RedFast"])
+        .iOS(.v15),
+        .tvOS(.v15),
     ],
-    dependencies: [],
+    products: [
+        // Use this if you only need UI components (no IAP, no push).
+        .library(
+            name: "redfast-ui",
+            targets: ["redfast-ui-complete"]
+        ),
+        // Use this if you need UI + in-app purchases (StoreKit 2).
+        .library(
+            name: "redfast-ui-iap",
+            targets: ["redfast-ui-iap-complete"]
+        ),
+        // Use this if you need UI + push notifications (APNs/FCM).
+        .library(
+            name: "redfast-ui-push",
+            targets: ["redfast-ui-push-complete"]
+        ),
+    ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        // MARK: - Binary targets
         .binaryTarget(
-            name: "RedFast",
-            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/2.3.16/RedFast.xcframework.zip",
-            checksum: "46e0d10f8693f09fadbd3813d9dcdcbb7e6bd0375ee15766bb9f697403a48c5a"),
+            name: "redfast-core",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-core-3.0.0.xcframework.zip",
+            checksum: "2a46bcece27e7f6892209e967ceefb01dc36efe28936d42f6b1192fc86e9444b"
+        ),
+        .binaryTarget(
+            name: "redfast-ui-bin",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-ui-3.0.0.xcframework.zip",
+            checksum: "58d04ae0e0fae7bb62e0f58f5e8b4858c843b644add133b6debc9933155594e9"
+        ),
+        .binaryTarget(
+            name: "redfast-ui-iap-bin",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-ui-iap-3.0.0.xcframework.zip",
+            checksum: "5956c887e70276bb54c6abc23b14a2df170cc60ccd22561a931593af76769e12"
+        ),
+        .binaryTarget(
+            name: "redfast-ui-push-bin",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-ui-push-3.0.0.xcframework.zip",
+            checksum: "7bc1f86d288224cb47b7f5490daaecb69adb044dfdb501dadb2e1fea77531ba2"
+        ),
+
+        // MARK: - Wrapper targets
+        // These expose clean product names and bundle all required dependencies.
+        .target(
+            name: "redfast-ui-complete",
+            dependencies: ["redfast-core", "redfast-ui-bin"],
+            path: "Sources/redfast-ui-complete"
+        ),
+        .target(
+            name: "redfast-ui-iap-complete",
+            dependencies: ["redfast-core", "redfast-ui-bin", "redfast-ui-iap-bin"],
+            path: "Sources/redfast-ui-iap-complete"
+        ),
+        .target(
+            name: "redfast-ui-push-complete",
+            dependencies: ["redfast-core", "redfast-ui-bin", "redfast-ui-push-bin"],
+            path: "Sources/redfast-ui-push-complete"
+        ),
     ]
 )
