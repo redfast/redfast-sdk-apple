@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3339EC3F2E6B61E30040A8B5 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 3339EC3E2E6B61E30040A8B5 /* RedFast */; };
 		3339EC412E6B61EA0040A8B5 /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = 3339EC402E6B61EA0040A8B5 /* RedFast */; };
 		431A5FD62C21F0320076165D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FD52C21F0320076165D /* StoreKit.framework */; };
 		4338A9D32C11FB4400950280 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338A9D22C11FB4400950280 /* DeepLinkService.swift */; };
@@ -169,8 +168,7 @@
 		438594652BFD035100CDA801 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594632BFD035100CDA801 /* CollectionHeaderView.swift */; };
 		4385946A2BFE2E6500CDA801 /* GenresViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438594692BFE2E6500CDA801 /* GenresViewModelTests.swift */; };
 		43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FCB2C206C620076165D /* StoreKit.framework */; };
-		D885DA0F2FDAF8150040864B /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D885DA0E2FDAF8150040864B /* FirebaseCore */; };
-		D885DA112FDAF8150040864B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D885DA102FDAF8150040864B /* FirebaseMessaging */; };
+		D880FD222FF82E5F007C28CF /* RedFast in Frameworks */ = {isa = PBXBuildFile; productRef = D880FD212FF82E5F007C28CF /* RedFast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,9 +331,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D885DA112FDAF8150040864B /* FirebaseMessaging in Frameworks */,
-				3339EC3F2E6B61E30040A8B5 /* RedFast in Frameworks */,
-				D885DA0F2FDAF8150040864B /* FirebaseCore in Frameworks */,
+				D880FD222FF82E5F007C28CF /* RedFast in Frameworks */,
 				43B9B9C52C346265000FF704 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,9 +751,7 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
-				3339EC3E2E6B61E30040A8B5 /* RedFast */,
-				D885DA0E2FDAF8150040864B /* FirebaseCore */,
-				D885DA102FDAF8150040864B /* FirebaseMessaging */,
+				D880FD212FF82E5F007C28CF /* RedFast */,
 			);
 			productName = Redflix;
 			productReference = 438592B92BE50CF500CDA801 /* Redflix.app */;
@@ -838,7 +832,6 @@
 			mainGroup = 438592B02BE50CF500CDA801;
 			packageReferences = (
 				3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
-				D885DA0D2FDAF8150040864B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 438592BA2BE50CF500CDA801 /* Products */;
 			projectDirPath = "";
@@ -1416,36 +1409,18 @@
 				minimumVersion = 2.3.1;
 			};
 		};
-		D885DA0D2FDAF8150040864B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.14.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3339EC3E2E6B61E30040A8B5 /* RedFast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
-			productName = RedFast;
-		};
 		3339EC402E6B61EA0040A8B5 /* RedFast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
 			productName = RedFast;
 		};
-		D885DA0E2FDAF8150040864B /* FirebaseCore */ = {
+		D880FD212FF82E5F007C28CF /* RedFast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D885DA0D2FDAF8150040864B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
-		};
-		D885DA102FDAF8150040864B /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D885DA0D2FDAF8150040864B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
+			package = 3339EC352E6B5B830040A8B5 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			productName = RedFast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
