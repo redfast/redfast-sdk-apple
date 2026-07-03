@@ -28,22 +28,22 @@ let package = Package(
         // MARK: - Binary targets
         .binaryTarget(
             name: "redfast-core",
-            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-core-3.0.0.xcframework.zip",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-core-3.0.0.xcframework.zip",
             checksum: "2a46bcece27e7f6892209e967ceefb01dc36efe28936d42f6b1192fc86e9444b"
         ),
         .binaryTarget(
             name: "redfast-ui-bin",
-            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-ui-3.0.0.xcframework.zip",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-3.0.0.xcframework.zip",
             checksum: "58d04ae0e0fae7bb62e0f58f5e8b4858c843b644add133b6debc9933155594e9"
         ),
         .binaryTarget(
             name: "redfast-ui-iap-bin",
-            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-ui-iap-3.0.0.xcframework.zip",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-iap-3.0.0.xcframework.zip",
             checksum: "5956c887e70276bb54c6abc23b14a2df170cc60ccd22561a931593af76769e12"
         ),
         .binaryTarget(
             name: "redfast-ui-push-bin",
-            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0/redfast-ui-push-3.0.0.xcframework.zip",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-push-3.0.0.xcframework.zip",
             checksum: "7bc1f86d288224cb47b7f5490daaecb69adb044dfdb501dadb2e1fea77531ba2"
         ),
 
