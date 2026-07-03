@@ -12,7 +12,12 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "RedFast",
-            targets: ["RedFast"])
+            targets: ["RedFast"]),
+        // Opt-in flavor that adds Firebase Cloud Messaging push support. Link this instead of
+        // "RedFast" (not both) when Firebase push is needed.
+        .library(
+            name: "RedFastFirebase",
+            targets: ["RedFastFirebase"])
     ],
     dependencies: [],
     targets: [
@@ -20,7 +25,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "RedFast",
-            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/2.3.16/RedFast.xcframework.zip",
-            checksum: "46e0d10f8693f09fadbd3813d9dcdcbb7e6bd0375ee15766bb9f697403a48c5a"),
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/2.3.17/RedFast.xcframework.zip",
+            checksum: "0bf9c98fa303554feacfbb82fb75c4754bbf89753db0dc19d2fccd3d19155d84"),
+        .binaryTarget(
+            name: "RedFastFirebase",
+            url: "https://github.com/recurly/redfast-sdk-apple/releases/download/2.3.17/RedFastFirebase.xcframework.zip",
+            checksum: "28619cf03b5d0904bbc79a2f94aa08615c897d03ce006f3923532351edf6d13e")
     ]
 )
