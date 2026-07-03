@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3372AB322EEB6BC000D1EEF4 /* redfast-core in Frameworks */ = {isa = PBXBuildFile; productRef = 3372AB312EEB6BC000D1EEF4 /* redfast-core */; };
-		3372AB342EEB6BC500D1EEF4 /* redfast-ui in Frameworks */ = {isa = PBXBuildFile; productRef = 3372AB332EEB6BC500D1EEF4 /* redfast-ui */; };
+		D88698B72FF8629E00555A85 /* redfast_core in Frameworks */ = {isa = PBXBuildFile; productRef = D88698B62FF8629E00555A85 /* redfast_core */; };
+		D88698B92FF8629E00555A85 /* redfast_ui in Frameworks */ = {isa = PBXBuildFile; productRef = D88698B82FF8629E00555A85 /* redfast_ui */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3372AB342EEB6BC500D1EEF4 /* redfast-ui in Frameworks */,
-				3372AB322EEB6BC000D1EEF4 /* redfast-core in Frameworks */,
+				D88698B92FF8629E00555A85 /* redfast_ui in Frameworks */,
+				D88698B72FF8629E00555A85 /* redfast_core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,8 +80,8 @@
 			);
 			name = Redflix;
 			packageProductDependencies = (
-				3372AB312EEB6BC000D1EEF4 /* redfast-core */,
-				3372AB332EEB6BC500D1EEF4 /* redfast-ui */,
+				D88698B62FF8629E00555A85 /* redfast_core */,
+				D88698B82FF8629E00555A85 /* redfast_ui */,
 			);
 			productName = Redflix;
 			productReference = 3372AAEA2EEB66BF00D1EEF4 /* Redflix.app */;
@@ -111,6 +111,9 @@
 			);
 			mainGroup = 3372AAE12EEB66BF00D1EEF4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D88698B52FF8629E00555A85 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3372AAEB2EEB66BF00D1EEF4 /* Products */;
 			projectDirPath = "";
@@ -375,14 +378,27 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		3372AB312EEB6BC000D1EEF4 /* redfast-core */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "redfast-core";
+/* Begin XCRemoteSwiftPackageReference section */
+		D88698B52FF8629E00555A85 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/recurly/redfast-sdk-apple";
+			requirement = {
+				branch = "task/re-1031-v3";
+				kind = branch;
+			};
 		};
-		3372AB332EEB6BC500D1EEF4 /* redfast-ui */ = {
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D88698B62FF8629E00555A85 /* redfast_core */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "redfast-ui";
+			package = D88698B52FF8629E00555A85 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			productName = redfast_core;
+		};
+		D88698B82FF8629E00555A85 /* redfast_ui */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D88698B52FF8629E00555A85 /* XCRemoteSwiftPackageReference "redfast-sdk-apple" */;
+			productName = redfast_ui;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
