@@ -13,24 +13,23 @@ let package = Package(
             name: "redfast-core",
             targets: ["redfast-core"]
         ),
-        // Use this if you only need UI components (no IAP, no push).
+        // UI only — SwiftUI components with no StoreKit dependency.
         .library(
             name: "redfast-ui",
-            targets: ["redfast-ui-complete"]
+            targets: ["redfast-ui"]
         ),
-        // Use this if you need UI + in-app purchases (StoreKit 2).
+        // UI + in-app purchases — requires redfast-core and redfast-ui.
         .library(
             name: "redfast-ui-iap",
-            targets: ["redfast-ui-iap-complete"]
+            targets: ["redfast-ui-iap"]
         ),
-        // Use this if you need UI + push notifications (APNs/FCM).
+        // UI + push notifications — requires redfast-core and redfast-ui.
         .library(
             name: "redfast-ui-push",
-            targets: ["redfast-ui-push-complete"]
+            targets: ["redfast-ui-push"]
         ),
     ],
     targets: [
-        // MARK: - Binary targets
         .binaryTarget(
             name: "redfast-core",
             url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-core-3.0.0.xcframework.zip",
@@ -50,24 +49,6 @@ let package = Package(
             name: "redfast-ui-push",
             url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-push-3.0.0.xcframework.zip",
             checksum: "7bc1f86d288224cb47b7f5490daaecb69adb044dfdb501dadb2e1fea77531ba2"
-        ),
-
-        // MARK: - Wrapper targets
-        // These expose clean product names and bundle all required dependencies.
-        .target(
-            name: "redfast-ui-complete",
-            dependencies: ["redfast-core", "redfast-ui"],
-            path: "Sources/redfast-ui-complete"
-        ),
-        .target(
-            name: "redfast-ui-iap-complete",
-            dependencies: ["redfast-core", "redfast-ui", "redfast-ui-iap"],
-            path: "Sources/redfast-ui-iap-complete"
-        ),
-        .target(
-            name: "redfast-ui-push-complete",
-            dependencies: ["redfast-core", "redfast-ui", "redfast-ui-push"],
-            path: "Sources/redfast-ui-push-complete"
         ),
     ]
 )
