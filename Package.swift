@@ -8,47 +8,39 @@ let package = Package(
         .tvOS(.v15),
     ],
     products: [
-        // Core only — use if you need SDK logic without any UI components.
         .library(
-            name: "redfast-core",
-            targets: ["redfast-core"]
-        ),
-        // UI only — SwiftUI components with no StoreKit dependency.
+            name: "redfast_core",     
+            targets: ["redfast_core"]),
         .library(
-            name: "redfast-ui",
-            targets: ["redfast-ui"]
-        ),
-        // UI + in-app purchases — requires redfast-core and redfast-ui.
+            name: "redfast_ui",       
+            targets: ["redfast_ui"]),
         .library(
-            name: "redfast-ui-iap",
-            targets: ["redfast-ui-iap"]
-        ),
-        // UI + push notifications — requires redfast-core and redfast-ui.
+            name: "redfast_ui_iap",   
+            targets: ["redfast_ui_iap"]),
         .library(
-            name: "redfast-ui-push",
-            targets: ["redfast-ui-push"]
-        ),
+            name: "redfast_ui_push",  
+            targets: ["redfast_ui_push"]),
     ],
     targets: [
         .binaryTarget(
-            name: "redfast-core",
+            name: "redfast_core",
             url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-core-3.0.0.xcframework.zip",
-            checksum: "d978995ae718ab154d092d54f80bdc265c70780e5591be607f6e913d28638236"
+            checksum: "d84c60e1f8113b72fd8cf302f9d05d8a6708720a2adc51986cf1dccac81b119e"
         ),
         .binaryTarget(
-            name: "redfast-ui",
+            name: "redfast_ui",
             url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-3.0.0.xcframework.zip",
-            checksum: "666c18a08dcbc40fc873c90421ea531f5342b9b11dd02cdfc64793811eb9d1bf"
+            checksum: "d19a9675d962833f0297e10f2e9af38eb1a450e02612fe628cdff0cd75ee650f"
         ),
         .binaryTarget(
-            name: "redfast-ui-iap",
+            name: "redfast_ui_iap",
             url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-iap-3.0.0.xcframework.zip",
-            checksum: "004e14884758dffac7e767fbf9ae97587640af07fba890e789493ce6a6ca2469"
+            checksum: "c8521415680e0f1e6e02247ea1f6b1feef52563de3c32c54425548c12cd03d99"
         ),
         .binaryTarget(
-            name: "redfast-ui-push",
+            name: "redfast_ui_push",
             url: "https://github.com/recurly/redfast-sdk-apple/releases/download/3.0.0-pre-release/redfast-ui-push-3.0.0.xcframework.zip",
-            checksum: "9463a703364119f291275660fe5ce1e6c1b15e03bda494bf1f70f91c9f038915"
+            checksum: "1676b84b1fb9f792c819b92a6fa4fcf241e0b3eaf76d5a21875e073476e44279"
         ),
     ]
 )
