@@ -89,3 +89,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 **/.DS_Store
+
+# Xcode shared workspace data (local only)
+Redflix/Redflix.xcodeproj/project.xcworkspace/xcshareddata/
